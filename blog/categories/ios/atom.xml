@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Jack‘s Blog]]></title>
   <link href="http://yangruixuan.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T19:05:36+08:00</updated>
+  <updated>2013-08-26T19:07:18+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to deploy app to your iOS device without certificate key]]></title>
-    <link href="http://yangruixuan.github.io/howto-deploy-app-to-your-ios-device-without-certificate/"/>
+    <link href="http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate/"/>
     <updated>2012-05-12T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/howto-deploy-app-to-your-ios-device-without-certificate</id>
+    <id>http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate</id>
     <content type="html"><![CDATA[<p>As we all know, it's cost $99 to become a apple developer. But sometimes we have to make sure the app is ready. So how to deploy app before we have a certificate private key? Here we go!</p>
 
 

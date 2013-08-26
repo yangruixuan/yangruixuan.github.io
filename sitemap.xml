@@ -2,41 +2,43 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
-            http://yangruixuan.github.io/howto-deploy-app-to-your-ios-device-without-certificate/
+            http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate/
         </loc>
         <lastmod>2013-08-26T18:50:49+08:00</lastmod>
     </url>
     <url>
-        <loc>http://yangruixuan.github.io/how-to-develop-mac-os-x-apps-using-html5/</loc>
+        <loc>http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5/</loc>
         <lastmod>2013-08-26T18:50:49+08:00</lastmod>
     </url>
     <url>
         <loc>
-            http://yangruixuan.github.io/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/
+            http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/
         </loc>
         <lastmod>2013-08-26T18:50:49+08:00</lastmod>
     </url>
     <url>
-        <loc>http://yangruixuan.github.io/using-gdb-debug-php-core-dump-file/</loc>
+        <loc>http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file/</loc>
         <lastmod>2013-08-26T18:50:49+08:00</lastmod>
     </url>
     <url>
         <loc>
-            http://yangruixuan.github.io/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/
+            http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/
         </loc>
         <lastmod>2013-08-26T18:50:49+08:00</lastmod>
     </url>
     <url>
-        <loc>http://yangruixuan.github.io/visit-android-market-in-app-with-market-link/</loc>
-        <lastmod>2013-08-26T18:50:49+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://yangruixuan.github.io/how-to-create-a-simple-launcher-app-for-android/</loc>
+        <loc>http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link/</loc>
         <lastmod>2013-08-26T18:50:49+08:00</lastmod>
     </url>
     <url>
         <loc>
-            http://yangruixuan.github.io/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/
+            http://yangruixuan.github.io/blog/how-to-create-a-simple-launcher-app-for-android/
+        </loc>
+        <lastmod>2013-08-26T18:50:49+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/
         </loc>
         <lastmod>2013-08-26T18:50:49+08:00</lastmod>
     </url>
