@@ -9,7 +9,7 @@
   <meta name="author" content="Jack Yang">
 
   
-  <meta name="description" content="I updated my Mac OS X to 10.8GM today. Everything was fine. And then update Xcode to 4.4GM for 4.3 doesn&#8217;t support 10.8. I made a mistake that &hellip;">
+  <meta name="description" content="How to Change the Path to the Active Xcode Installation for Your Machine 2012-07-13 I updated my Mac OS X to 10.8GM today. Everything was fine. And &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,12 +20,16 @@
   
   <link rel="canonical" href="http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine">
   <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Jack's Blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -35,44 +39,42 @@
 </head>
 
 <body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Jack's Blog</a></h1>
-  
-    <h2>A Programer's Story.</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:yangruixuan.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
 </ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
+<ul class="nav pull-right">
+    
+    
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
 <article class="hentry" role="article">
   
+
   <header>
-    
-      <h1 class="entry-title">How to Change the Path to the Active Xcode Installation for Your Machine</h1>
-    
-    
-      <p class="meta">
-        
+  <div class="jumbotron">
+    How to Change the Path to the Active Xcode Installation for Your Machine
+	<h5>
 
 
 
@@ -84,14 +86,12 @@
   
 
 
-<time datetime="2012-07-13T00:00:00+08:00" pubdate data-updated="true">2012-07-13</time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>I updated my Mac OS X to 10.8GM today. Everything was fine. And then update Xcode to 4.4GM for 4.3 doesn&#8217;t support 10.8. I made a mistake that I run Xcode.app in dmg file. Then a setup wizard showed up. I press next next next&#8230; Suddenly I remind I should move the app to Application folder first. But the setup wizard can&#8217;t show up again. And the path of xcode had be set to /Volumes/Xcode.app/&#8230;<br />
+<i class="icon-calendar-empty"></i> <time datetime="2012-07-13T00:00:00+08:00" pubdate data-updated="true">2012-07-13</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>I updated my Mac OS X to 10.8GM today. Everything was fine. And then update Xcode to 4.4GM for 4.3 doesn&#8217;t support 10.8. I made a mistake that I run Xcode.app in dmg file. Then a setup wizard showed up. I press next next next&#8230; Suddenly I remind I should move the app to Application folder first. But the setup wizard can&#8217;t show up again. And the path of xcode had be set to /Volumes/Xcode.app/&#8230;<br />
 How to change it to the right path? I googled it there is a command named xcode-select.
 <pre>
 $ xcode-select
@@ -115,107 +115,83 @@ $ xcode-select --print-path
 $ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
 </pre>
 Everything goes fine now.</xcode_path></p>
-</div>
+
+    </div>
+  </div>
+
 
 
   <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Jack Yang</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-13T00:00:00+08:00" pubdate data-updated="true">2012-07-13</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/mac-os-x/'>Mac OS X</a>
-  
-</span>
-
-
-    </p>
+    <hr>
     
-      <div class="sharing">
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/blog/categories/Mac OS X/"><span class="badge">Mac OS X</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/" data-via="" data-counturl="http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/" >Tweet</a>
+  
+  <a class="addthis_button_tweet"></a>
   
   
-  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
 
+      </div>
+      
+      
+    </div>
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/how-to-develop-mac-os-x-apps-using-html5/" title="Previous Post: How to develop Mac OS X apps using HTML5">&laquo; How to develop Mac OS X apps using HTML5</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/using-gdb-debug-php-core-dump-file/" title="Next Post: Using gdb debug php core dump file">Using gdb debug php core dump file &raquo;</a>
-      
-    </p>
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/how-to-develop-mac-os-x-apps-using-html5/" title="Previous Post: How to develop Mac OS X apps using HTML5">&laquo; How to develop Mac OS X apps using HTML5</a>
+          
+          
+            <a class="basic-alignment right" href="/blog/using-gdb-debug-php-core-dump-file/" title="Next Post: Using gdb debug php core dump file">Using gdb debug php core dump file &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
   </footer>
 </article>
 
 </div>
 
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/">Install PhpBeautifier Plugin for Sublime Text 2 in Mac</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/how-to-create-a-simple-launcher-app-for-android/">How to Create a Simple Launcher App for Android</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/visit-android-market-in-app-with-market-link/">Visit Android Market in App With Market:// Link</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/">How to Disable Android Home Menu Back Search Keys Out of Apps or Change Keys Layout</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/using-gdb-debug-php-core-dump-file/">Using Gdb Debug Php Core Dump File</a>
-      </li>
-    
-  </ul>
-</section>
 
 
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
   Copyright &copy; 2013 - Jack Yang -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
 </p>
 
-</footer>
+
+        </footer>
+      </div>
+    </div>
+  </div>
   
 
 
@@ -229,7 +205,7 @@ Everything goes fine now.</xcode_path></p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
