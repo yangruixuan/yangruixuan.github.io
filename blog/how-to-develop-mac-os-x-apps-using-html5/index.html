@@ -101,16 +101,16 @@ Let&#8217;s start!</p>
 
 <p>1. Create a Mac OS X Cocoa Application<br />
 Find it in XCode -&gt; File -&gt; New -&gt; Project -&gt; Mac OS X Application -&gt; Cocoa Application
-<a href="/images/create_mac_app.png"><img class="alignnone size-full wp-image-38" title="create_mac_app" src="/images/create_mac_app.png" alt="" width="100%" /></a></p>
+<a href="/images/blog/create_mac_app.png"><img class="alignnone size-full wp-image-38" title="create_mac_app" src="/images/blog/create_mac_app.png" alt="" width="100%" /></a></p>
 
 <p>2. Add [WebKit.framework] in your [Link Binary With Libraries].</p>
 
 <p>3. Copy your web files like .html, .js, images to your project. If you can&#8217;t see them in your XCode, you should drop them from Finder to XCode.<br />
 I did some tests. These web files should be used like in the same path. I think it&#8217;s because the files in [Copy Bundle Resources] of [Build Phases] are in the same level.
-<a href="/images/build_phases.png"><img class="alignnone size-full wp-image-39" title="build_phases" src="/images/build_phases.png" alt="" width="100%" /></a></p>
+<a href="/images/blog/build_phases.png"><img class="alignnone size-full wp-image-39" title="build_phases" src="/images/blog/build_phases.png" alt="" width="100%" /></a></p>
 
 <p>4. Open your MainMenu.xib and drop a WebView in the interface. Make the size suit your app.
-<a href="/images/add_webview.png"><img title="add_webview" src="/images/add_webview.png" alt="" width="100%" /></a></p>
+<a href="/images/blog/add_webview.png"><img title="add_webview" src="/images/blog/add_webview.png" alt="" width="100%" /></a></p>
 
 <p>5. Link the WebView to your AppDelegate.h. The code in AppDelegate.h:<br />
 [cpp]<br />
@@ -151,7 +151,7 @@ NSString *htmlPath = [resourcesPath stringByAppendingString:@&#8221;/aero.html&#
 [/cpp]</p>
 
 <p>That&#8217;s it. Running like a native app.
-<a href="/images/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="/images/web_app.png" alt="" width="100%" /></a></p>
+<a href="/images/blog/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="/images/blog/web_app.png" alt="" width="100%" /></a></p>
 
     </div>
   </div>

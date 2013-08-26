@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac OS X | Jack's Blog]]></title>
   <link href="http://yangruixuan.github.io/blog/categories/mac-os-x/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T20:02:44+08:00</updated>
+  <updated>2013-08-26T20:13:35+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -28,7 +28,7 @@
 
 
 
-<p><img class="alignnone size-full wp-image-139" alt="sublime_package_install" src="http://yangruixuan.github.io/images/sublime_package_install.png" width="601" height="93" /></p>
+<p><img class="alignnone size-full wp-image-139" alt="sublime_package_install" src="http://yangruixuan.github.io/images/blog/sublime_package_install.png" width="601" height="93" /></p>
 
 
 
@@ -38,7 +38,7 @@
 
 
 
-<p><img class="alignnone size-full wp-image-138" alt="sublime_menu_package" src="http://yangruixuan.github.io/images/sublime_menu_package.png" width="469" height="307" /></p>
+<p><img class="alignnone size-full wp-image-138" alt="sublime_menu_package" src="http://yangruixuan.github.io/images/blog/sublime_menu_package.png" width="469" height="307" /></p>
 
 
 
@@ -136,7 +136,7 @@ Let's start!</p>
 
 <p>1. Create a Mac OS X Cocoa Application<br />
 Find it in XCode -&gt; File -&gt; New -&gt; Project -&gt; Mac OS X Application -&gt; Cocoa Application
-<a href="http://yangruixuan.github.io/images/create_mac_app.png"><img class="alignnone size-full wp-image-38" title="create_mac_app" src="http://yangruixuan.github.io/images/create_mac_app.png" alt="" width="100%" /></a></p>
+<a href="http://yangruixuan.github.io/images/blog/create_mac_app.png"><img class="alignnone size-full wp-image-38" title="create_mac_app" src="http://yangruixuan.github.io/images/blog/create_mac_app.png" alt="" width="100%" /></a></p>
 
 
 
@@ -148,13 +148,13 @@ Find it in XCode -&gt; File -&gt; New -&gt; Project -&gt; Mac OS X Application -
 
 <p>3. Copy your web files like .html, .js, images to your project. If you can't see them in your XCode, you should drop them from Finder to XCode.<br />
 I did some tests. These web files should be used like in the same path. I think it's because the files in [Copy Bundle Resources] of [Build Phases] are in the same level.
-<a href="http://yangruixuan.github.io/images/build_phases.png"><img class="alignnone size-full wp-image-39" title="build_phases" src="http://yangruixuan.github.io/images/build_phases.png" alt="" width="100%" /></a></p>
+<a href="http://yangruixuan.github.io/images/blog/build_phases.png"><img class="alignnone size-full wp-image-39" title="build_phases" src="http://yangruixuan.github.io/images/blog/build_phases.png" alt="" width="100%" /></a></p>
 
 
 
 
 <p>4. Open your MainMenu.xib and drop a WebView in the interface. Make the size suit your app.
-<a href="http://yangruixuan.github.io/images/add_webview.png"><img title="add_webview" src="http://yangruixuan.github.io/images/add_webview.png" alt="" width="100%" /></a></p>
+<a href="http://yangruixuan.github.io/images/blog/add_webview.png"><img title="add_webview" src="http://yangruixuan.github.io/images/blog/add_webview.png" alt="" width="100%" /></a></p>
 
 
 
@@ -225,7 +225,7 @@ NSString *htmlPath = [resourcesPath stringByAppendingString:@"/aero.html"];<br /
 
 
 <p>That's it. Running like a native app.
-<a href="http://yangruixuan.github.io/images/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="http://yangruixuan.github.io/images/web_app.png" alt="" width="100%" /></a></p>
+<a href="http://yangruixuan.github.io/images/blog/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="http://yangruixuan.github.io/images/blog/web_app.png" alt="" width="100%" /></a></p>
 
 ]]></content>
   </entry>
