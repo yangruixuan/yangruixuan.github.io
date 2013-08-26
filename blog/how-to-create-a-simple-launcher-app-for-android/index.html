@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to create a simple Launcher app for Android - Jack‘s Blog</title>
+  <meta name="author" content="Jack Yang">
+
+  
+  <meta name="description" content="1. we need make this app as home launcher. Bind the HOME key press.
+When you click the HOME key. This selector shows up. Add two category to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yangruixuan.github.io/blog/how-to-create-a-simple-launcher-app-for-android">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Jack‘s Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Jack‘s Blog</a></h1>
+  
+    <h2>A Programer's Story.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yangruixuan.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Create a Simple Launcher App for Android</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-10T00:00:00+08:00" pubdate data-updated="true">2013-01-10</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><h2>1. we need make this app as home launcher. Bind the HOME key press.</h2>
+When you click the HOME key. This selector shows up.</p>
+
+<p><a href="http://www.jack-y.com/how-to-create-a-simple-launcher-app-for-android/55_2_48be3591a12df52/" rel="attachment wp-att-119"><img class="alignnone size-full wp-image-119" alt="55_2_48be3591a12df52" src="http://www.jack-y.com/wp-content/uploads/2013/01/55_2_48be3591a12df52.jpg" width="328" height="492" /></a>
+Add two category to AndroidManifest.xml</p>
+
+<p>[xhtml]
+<category android:name="android.intent.category.HOME" />
+<category android:name="android.intent.category.DEFAULT" />
+[/xhtml]</p>
+
+<p>AndroidManifest.xml:<br />
+[xhtml]
+<?xml version="1.0" encoding="utf-8"?></p>
+
+<p><manifest xmlns:android="http://schemas.android.com/apk/res/android"<br />
+      package=&#8221;com.son1c.launcher&#8221;<br />
+      android:versionCode=&#8221;1&#8221;<br />
+      android:versionName=&#8221;1.0&#8221;></p>
+
+<p>    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".MainActivity"<br />
+                  android:label=&#8221;@string/app_name&#8221;></application></p>
+
+<p>            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter></p>
+
+<p>        
+    
+
+[/xhtml]</p>
+
+<p><h2>2. List all apps in Android</h2>
+Most launders is used to list apps.</p>
+
+<p><a href="http://www.jack-y.com/how-to-create-a-simple-launcher-app-for-android/55_2_3b434ff967012d6/" rel="attachment wp-att-120"><img class="alignnone size-full wp-image-120" alt="55_2_3b434ff967012d6" src="http://www.jack-y.com/wp-content/uploads/2013/01/55_2_3b434ff967012d6.jpg" width="324" height="449" /></a></p>
+
+<p>1) Modify main.xml and add GridView to it.<br />
+[xhtml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"<br />
+    android:orientation=&#8221;vertical&#8221; android:layout_width=&#8221;fill_parent&#8221;<br />
+    android:layout_height=&#8221;fill_parent&#8221;></p>
+
+<p>    <GridView android:layout_width="match_parent"<br />
+        android:id=&#8221;@+id/apps_list&#8221;<br />
+        android:numColumns=&#8221;4&#8221;<br />
+        android:layout_height=&#8221;wrap_content&#8221;>
+    
+
+[/xhtml]<br />
+2) Search all the apps by PackageManager<br />
+[java]<br />
+private void loadApps() {<br />
+    Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);<br />
+    mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);</p>
+
+<p>    mApps = getPackageManager().queryIntentActivities(mainIntent, 0);<br />
+}
+[/java]<br />
+3) Add adapter for GridView<br />
+[java]<br />
+public class AppsAdapter extends BaseAdapter {</p>
+
+<p>        public AppsAdapter() {<br />
+        }</p>
+
+<p>        public View getView(int position, View convertView, ViewGroup parent) {<br />
+            ImageView i;<br />
+            if (convertView == null) {<br />
+                i = new ImageView(MyHome.this);<br />
+                i.setScaleType(ImageView.ScaleType.FIT_CENTER);<br />
+                i.setLayoutParams(new GridView.LayoutParams(50, 50));<br />
+            } else {<br />
+                i = (ImageView) convertView;<br />
+            }<br />
+            ResolveInfo info = mApps.get(position);<br />
+            i.setImageDrawable(info.activityInfo.loadIcon(getPackageManager()));</p>
+
+<p>            return i;<br />
+        }</p>
+
+<p>        public final int getCount() {<br />
+            return mApps.size();<br />
+        }</p>
+
+<p>        public final Object getItem(int position) {<br />
+            return mApps.get(position);<br />
+        }</p>
+
+<p>        public final long getItemId(int position) {<br />
+            return position;<br />
+        }<br />
+}
+[/java]<br />
+4) Add onItemClick for GridView<br />
+[java]<br />
+private OnItemClickListener listener = new OnItemClickListener() {<br />
+    @Override<br />
+    public void onItemClick(AdapterView<?> parent, View view, int position,long id) {<br />
+        //TODO&#8230;.<br />
+    }<br />
+};<br />
+[/java]<br />
+5) Launch app when click<br />
+[java]<br />
+public void onItemClick(AdapterView<?> parent, View view, int position,long id) {<br />
+            ResolveInfo info = mApps.get(position);<br />
+            // Package Name<br />
+            String pkg = info.activityInfo.packageName;<br />
+            // Main activity of app<br />
+            String cls = info.activityInfo.name;</p>
+
+<p>            ComponentName componet = new ComponentName(pkg, cls);</p>
+
+<p>            Intent i = new Intent();<br />
+            i.setComponent(componet);<br />
+            startActivity(i);<br />
+        }<br />
+}
+[/java]<br />
+6) Disable the BACK key<br />
+[java]<br />
+public boolean onKeyDown(int keyCode, KeyEvent event) {<br />
+	if (keyCode == KeyEvent.KEYCODE_BACK) {<br />
+		return true;<br />
+	} else {<br />
+		return super.onKeyDown(keyCode, event);<br />
+	}<br />
+}
+[/java]<br />
+Finally the whole Activity code:<br />
+[java]<br />
+package com.son1c.launcher;</p>
+
+<p>import java.util.ArrayList;<br />
+import java.util.List;</p>
+
+<p>import android.app.Activity;<br />
+import android.content.ComponentName;<br />
+import android.content.Intent;<br />
+import android.content.pm.ResolveInfo;<br />
+import android.os.Bundle;<br />
+import android.view.KeyEvent;<br />
+import android.view.View;<br />
+import android.view.ViewGroup;<br />
+import android.widget.AdapterView;<br />
+import android.widget.AdapterView.OnItemClickListener;<br />
+import android.widget.BaseAdapter;<br />
+import android.widget.GridView;<br />
+import android.widget.ImageView;</p>
+
+<p>public class MainActivity extends Activity {</p>
+
+<p>	private List<resolveinfo> mApps;<br />
+	private GridView mGrid;<br />
+	private OnItemClickListener listener = new OnItemClickListener() {<br />
+		@Override<br />
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {<br />
+			ResolveInfo info = mApps.get(position);<br />
+			String pkg = info.activityInfo.packageName;<br />
+			String cls = info.activityInfo.name;<br />
+			ComponentName componet = new ComponentName(pkg, cls);</resolveinfo></p>
+
+<p>			Intent i = new Intent();<br />
+			i.setComponent(componet);<br />
+			startActivity(i);<br />
+		}</p>
+
+<p>	};</p>
+
+<p>	/** Called when the activity is first created. */<br />
+	@Override<br />
+	public void onCreate(Bundle savedInstanceState) {<br />
+		super.onCreate(savedInstanceState);</p>
+
+<p>		loadApps();<br />
+		setContentView(R.layout.main);<br />
+		mGrid = (GridView) findViewById(R.id.apps_list);<br />
+		mGrid.setAdapter(new AppsAdapter());</p>
+
+<p>		mGrid.setOnItemClickListener(listener);<br />
+	}</p>
+
+<p>	private void loadApps() {<br />
+		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);<br />
+		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);</p>
+
+<p>		mApps = getPackageManager().queryIntentActivities(mainIntent, 0);<br />
+	}</p>
+
+<p>	public class AppsAdapter extends BaseAdapter {<br />
+		public AppsAdapter() {<br />
+		}</p>
+
+<p>		public View getView(int position, View convertView, ViewGroup parent) {<br />
+			ImageView i;</p>
+
+<p>			if (convertView == null) {<br />
+				i = new ImageView(MainActivity.this);<br />
+				i.setScaleType(ImageView.ScaleType.FIT_CENTER);<br />
+				i.setLayoutParams(new GridView.LayoutParams(120, 120));<br />
+				i.setPadding(12, 12, 12, 12);<br />
+			} else {<br />
+				i = (ImageView) convertView;<br />
+			}</p>
+
+<p>			ResolveInfo info = mApps.get(position);<br />
+			i.setImageDrawable(info.activityInfo.loadIcon(getPackageManager()));</p>
+
+<p>			return i;<br />
+		}</p>
+
+<p>		public final int getCount() {<br />
+			return mApps.size();<br />
+		}</p>
+
+<p>		public final Object getItem(int position) {<br />
+			return mApps.get(position);<br />
+		}</p>
+
+<p>		public final long getItemId(int position) {<br />
+			return position;<br />
+		}<br />
+	}</p>
+
+<p>	@Override<br />
+	public boolean onKeyDown(int keyCode, KeyEvent event) {<br />
+		if (keyCode == KeyEvent.KEYCODE_BACK) {<br />
+			return true;<br />
+		} else {<br />
+			return super.onKeyDown(keyCode, event);<br />
+		}<br />
+	}<br />
+}
+[/java]</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jack Yang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-10T00:00:00+08:00" pubdate data-updated="true">2013-01-10</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yangruixuan.github.io/blog/how-to-create-a-simple-launcher-app-for-android/" data-via="" data-counturl="http://yangruixuan.github.io/blog/how-to-create-a-simple-launcher-app-for-android/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/visit-android-market-in-app-with-market-link/" title="Previous Post: Visit Android market in app with market:// link">&laquo; Visit Android market in app with market:// link</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/" title="Next Post: Install PhpBeautifier plugin for Sublime text 2 in Mac">Install PhpBeautifier plugin for Sublime text 2 in Mac &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/">Install PhpBeautifier Plugin for Sublime Text 2 in Mac</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/how-to-create-a-simple-launcher-app-for-android/">How to Create a Simple Launcher App for Android</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/visit-android-market-in-app-with-market-link/">Visit Android Market in App With Market:// Link</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/">How to Disable Android Home Menu Back Search Keys Out of Apps or Change Keys Layout</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/using-gdb-debug-php-core-dump-file/">Using Gdb Debug Php Core Dump File</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jack Yang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

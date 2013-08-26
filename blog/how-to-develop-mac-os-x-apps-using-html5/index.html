@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to develop Mac OS X apps using HTML5 - Jack‘s Blog</title>
+  <meta name="author" content="Jack Yang">
+
+  
+  <meta name="description" content="HTML5 is very popular now. Lots of apps in mobile using HTML5 framework like PhoneGap, Sencha, Trigger, jQueryMobile&#8230;
+If you want to develop &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Jack‘s Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Jack‘s Blog</a></h1>
+  
+    <h2>A Programer's Story.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yangruixuan.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Develop Mac OS X Apps Using HTML5</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-28T00:00:00+08:00" pubdate data-updated="true">2012-05-28</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>HTML5 is very popular now. Lots of apps in mobile using HTML5 framework like PhoneGap, Sencha, Trigger, jQueryMobile&#8230;<br />
+If you want to develop Mac apps, you have to learn Objective-C and cocoa. But it is difficult for a beginner or web designer. So how about using HTML5? We can add a WebView on the app and display local html in it.<br />
+Let&#8217;s start!</p>
+
+<p>1. Create a Mac OS X Cocoa Application<br />
+Find it in XCode -&gt; File -&gt; New -&gt; Project -&gt; Mac OS X Application -&gt; Cocoa Application
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/create_mac_app.png"><img class="alignnone size-full wp-image-38" title="create_mac_app" src="http://www.jack-y.com/wp-content/uploads/2012/05/create_mac_app.png" alt="" width="100%" /></a></p>
+
+<p>2. Add [WebKit.framework] in your [Link Binary With Libraries].</p>
+
+<p>3. Copy your web files like .html, .js, images to your project. If you can&#8217;t see them in your XCode, you should drop them from Finder to XCode.<br />
+I did some tests. These web files should be used like in the same path. I think it&#8217;s because the files in [Copy Bundle Resources] of [Build Phases] are in the same level.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/build_phases.png"><img class="alignnone size-full wp-image-39" title="build_phases" src="http://www.jack-y.com/wp-content/uploads/2012/05/build_phases.png" alt="" width="100%" /></a></p>
+
+<p>4. Open your MainMenu.xib and drop a WebView in the interface. Make the size suit your app.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/add_webview.png"><img title="add_webview" src="http://www.jack-y.com/wp-content/uploads/2012/05/add_webview.png" alt="" width="100%" /></a></p>
+
+<p>5. Link the WebView to your AppDelegate.h. The code in AppDelegate.h:<br />
+[cpp]<br />
+#import &#8220;Cocoa/Cocoa.h&#8221;<br />
+#import &#8220;WebKit/WebKit.h&#8221;</p>
+
+<p>@interface AppDelegate : NSObject {<br />
+NSWindow *window;<br />
+IBOutlet WebView *webView;<br />
+}</p>
+
+<p>@property (assign) IBOutlet NSWindow *window;<br />
+@property (nonatomic, retain) IBOutlet WebView *webView;</p>
+
+<p>@end<br />
+[/cpp]</p>
+
+<p>6. Open your web htm file when the app start. Insert the open file code in AppDelegate.m:<br />
+[cpp]<br />
+#import &#8220;AppDelegate.h&#8221;</p>
+
+<p>@implementation AppDelegate</p>
+
+<p>@synthesize window;<br />
+@synthesize webView;</p>
+
+<p>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification<br />
+{
+// Insert code here to initialize your application<br />
+}</p>
+
+<p>- (void)awakeFromNib {<br />
+NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];<br />
+NSString *htmlPath = [resourcesPath stringByAppendingString:@&#8221;/aero.html&#8221;];<br />
+[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:htmlPath]]];<br />
+}
+@end<br />
+[/cpp]</p>
+
+<p>That&#8217;s it. Running like a native app.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="http://www.jack-y.com/wp-content/uploads/2012/05/web_app.png" alt="" width="100%" /></a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jack Yang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-28T00:00:00+08:00" pubdate data-updated="true">2012-05-28</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mac-os-x/'>Mac OS X</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5/" data-via="" data-counturl="http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/howto-deploy-app-to-your-ios-device-without-certificate/" title="Previous Post: How to deploy app to your iOS device without certificate key">&laquo; How to deploy app to your iOS device without certificate key</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/" title="Next Post: How to change the path to the active Xcode installation for your machine">How to change the path to the active Xcode installation for your machine &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/">Install PhpBeautifier Plugin for Sublime Text 2 in Mac</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/how-to-create-a-simple-launcher-app-for-android/">How to Create a Simple Launcher App for Android</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/visit-android-market-in-app-with-market-link/">Visit Android Market in App With Market:// Link</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/">How to Disable Android Home Menu Back Search Keys Out of Apps or Change Keys Layout</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/using-gdb-debug-php-core-dump-file/">Using Gdb Debug Php Core Dump File</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jack Yang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

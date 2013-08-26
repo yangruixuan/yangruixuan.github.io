@@ -4,7 +4,7 @@
   <title><![CDATA[Jack‘s Blog]]></title>
   <link href="http://yangruixuan.github.io/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T16:48:53+08:00</updated>
+  <updated>2013-08-26T19:01:18+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -12,5 +12,651 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install PhpBeautifier plugin for Sublime text 2 in Mac]]></title>
+    <link href="http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/"/>
+    <updated>2013-01-17T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac</id>
+    <content type="html"><![CDATA[<p>1. Install PhpBeautifier from pear channel : sudo pear install &#8211;alldeps channel://pear.php.net/php_beautifier-0.1.15</p>
+
+<p>2. Install PhpBeautifier plugin in Sublime text. Press cmd+shift+p and select Package Control:Install Package. Then select PhpBeautifier.</p>
+
+<p><img class="alignnone size-full wp-image-139" alt="sublime_package_install" src="http://www.jack-y.com/wp-content/uploads/2013/01/sublime_package_install.png" width="601" height="93" /></p>
+
+<p>3. Select Browse Packages&#8230; in menu. Find PhpBeautifier folder and edit php_beautifier.py in it.</p>
+
+<p><a href="http://www.jack-y.com/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/sublime_menu_package/" rel="attachment wp-att-138"><img class="alignnone size-full wp-image-138" alt="sublime_menu_package" src="http://www.jack-y.com/wp-content/uploads/2013/01/sublime_menu_package.png" width="469" height="307" /></a></p>
+
+<p>4. Edit line in php_beautifier.py</p>
+
+<p>cmd = &#8220;php_beautifier&#8221;</p>
+
+<p>to</p>
+
+<p>cmd = &#8220;/Users/username/pear/bin/php_beautifier&#8221;</p>
+
+<p>5. Edit Pear.filter.php , phpBB.filter.php in /Users/username/pear/share/pear/PHP/Beautifier/</p>
+
+<p>comment this line</p>
+
+<p>require_once(&#8220;PEAR/Config.php&#8221;);</p>
+
+<p>6. Press cmd+shift+p and select Format:Php</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to create a simple Launcher app for Android]]></title>
+    <link href="http://yangruixuan.github.io/blog/how-to-create-a-simple-launcher-app-for-android/"/>
+    <updated>2013-01-10T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/how-to-create-a-simple-launcher-app-for-android</id>
+    <content type="html"><![CDATA[<p><h2>1. we need make this app as home launcher. Bind the HOME key press.</h2>
+When you click the HOME key. This selector shows up.</p>
+
+<p><a href="http://www.jack-y.com/how-to-create-a-simple-launcher-app-for-android/55_2_48be3591a12df52/" rel="attachment wp-att-119"><img class="alignnone size-full wp-image-119" alt="55_2_48be3591a12df52" src="http://www.jack-y.com/wp-content/uploads/2013/01/55_2_48be3591a12df52.jpg" width="328" height="492" /></a>
+Add two category to AndroidManifest.xml</p>
+
+<p>[xhtml]
+<category android:name="android.intent.category.HOME" />
+<category android:name="android.intent.category.DEFAULT" />
+[/xhtml]</p>
+
+<p>AndroidManifest.xml:<br />
+[xhtml]
+<?xml version="1.0" encoding="utf-8"?></p>
+
+<p><manifest xmlns:android="http://schemas.android.com/apk/res/android"<br />
+      package=&#8221;com.son1c.launcher&#8221;<br />
+      android:versionCode=&#8221;1&#8221;<br />
+      android:versionName=&#8221;1.0&#8221;></p>
+
+<p>    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".MainActivity"<br />
+                  android:label=&#8221;@string/app_name&#8221;></application></p>
+
+<p>            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter></p>
+
+<p>        
+    
+
+[/xhtml]</p>
+
+<p><h2>2. List all apps in Android</h2>
+Most launders is used to list apps.</p>
+
+<p><a href="http://www.jack-y.com/how-to-create-a-simple-launcher-app-for-android/55_2_3b434ff967012d6/" rel="attachment wp-att-120"><img class="alignnone size-full wp-image-120" alt="55_2_3b434ff967012d6" src="http://www.jack-y.com/wp-content/uploads/2013/01/55_2_3b434ff967012d6.jpg" width="324" height="449" /></a></p>
+
+<p>1) Modify main.xml and add GridView to it.<br />
+[xhtml]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"<br />
+    android:orientation=&#8221;vertical&#8221; android:layout_width=&#8221;fill_parent&#8221;<br />
+    android:layout_height=&#8221;fill_parent&#8221;></p>
+
+<p>    <GridView android:layout_width="match_parent"<br />
+        android:id=&#8221;@+id/apps_list&#8221;<br />
+        android:numColumns=&#8221;4&#8221;<br />
+        android:layout_height=&#8221;wrap_content&#8221;>
+    
+
+[/xhtml]<br />
+2) Search all the apps by PackageManager<br />
+[java]<br />
+private void loadApps() {<br />
+    Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);<br />
+    mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);</p>
+
+<p>    mApps = getPackageManager().queryIntentActivities(mainIntent, 0);<br />
+}
+[/java]<br />
+3) Add adapter for GridView<br />
+[java]<br />
+public class AppsAdapter extends BaseAdapter {</p>
+
+<p>        public AppsAdapter() {<br />
+        }</p>
+
+<p>        public View getView(int position, View convertView, ViewGroup parent) {<br />
+            ImageView i;<br />
+            if (convertView == null) {<br />
+                i = new ImageView(MyHome.this);<br />
+                i.setScaleType(ImageView.ScaleType.FIT_CENTER);<br />
+                i.setLayoutParams(new GridView.LayoutParams(50, 50));<br />
+            } else {<br />
+                i = (ImageView) convertView;<br />
+            }<br />
+            ResolveInfo info = mApps.get(position);<br />
+            i.setImageDrawable(info.activityInfo.loadIcon(getPackageManager()));</p>
+
+<p>            return i;<br />
+        }</p>
+
+<p>        public final int getCount() {<br />
+            return mApps.size();<br />
+        }</p>
+
+<p>        public final Object getItem(int position) {<br />
+            return mApps.get(position);<br />
+        }</p>
+
+<p>        public final long getItemId(int position) {<br />
+            return position;<br />
+        }<br />
+}
+[/java]<br />
+4) Add onItemClick for GridView<br />
+[java]<br />
+private OnItemClickListener listener = new OnItemClickListener() {<br />
+    @Override<br />
+    public void onItemClick(AdapterView<?> parent, View view, int position,long id) {<br />
+        //TODO&#8230;.<br />
+    }<br />
+};<br />
+[/java]<br />
+5) Launch app when click<br />
+[java]<br />
+public void onItemClick(AdapterView<?> parent, View view, int position,long id) {<br />
+            ResolveInfo info = mApps.get(position);<br />
+            // Package Name<br />
+            String pkg = info.activityInfo.packageName;<br />
+            // Main activity of app<br />
+            String cls = info.activityInfo.name;</p>
+
+<p>            ComponentName componet = new ComponentName(pkg, cls);</p>
+
+<p>            Intent i = new Intent();<br />
+            i.setComponent(componet);<br />
+            startActivity(i);<br />
+        }<br />
+}
+[/java]<br />
+6) Disable the BACK key<br />
+[java]<br />
+public boolean onKeyDown(int keyCode, KeyEvent event) {<br />
+	if (keyCode == KeyEvent.KEYCODE_BACK) {<br />
+		return true;<br />
+	} else {<br />
+		return super.onKeyDown(keyCode, event);<br />
+	}<br />
+}
+[/java]<br />
+Finally the whole Activity code:<br />
+[java]<br />
+package com.son1c.launcher;</p>
+
+<p>import java.util.ArrayList;<br />
+import java.util.List;</p>
+
+<p>import android.app.Activity;<br />
+import android.content.ComponentName;<br />
+import android.content.Intent;<br />
+import android.content.pm.ResolveInfo;<br />
+import android.os.Bundle;<br />
+import android.view.KeyEvent;<br />
+import android.view.View;<br />
+import android.view.ViewGroup;<br />
+import android.widget.AdapterView;<br />
+import android.widget.AdapterView.OnItemClickListener;<br />
+import android.widget.BaseAdapter;<br />
+import android.widget.GridView;<br />
+import android.widget.ImageView;</p>
+
+<p>public class MainActivity extends Activity {</p>
+
+<p>	private List<resolveinfo> mApps;<br />
+	private GridView mGrid;<br />
+	private OnItemClickListener listener = new OnItemClickListener() {<br />
+		@Override<br />
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {<br />
+			ResolveInfo info = mApps.get(position);<br />
+			String pkg = info.activityInfo.packageName;<br />
+			String cls = info.activityInfo.name;<br />
+			ComponentName componet = new ComponentName(pkg, cls);</resolveinfo></p>
+
+<p>			Intent i = new Intent();<br />
+			i.setComponent(componet);<br />
+			startActivity(i);<br />
+		}</p>
+
+<p>	};</p>
+
+<p>	/** Called when the activity is first created. */<br />
+	@Override<br />
+	public void onCreate(Bundle savedInstanceState) {<br />
+		super.onCreate(savedInstanceState);</p>
+
+<p>		loadApps();<br />
+		setContentView(R.layout.main);<br />
+		mGrid = (GridView) findViewById(R.id.apps_list);<br />
+		mGrid.setAdapter(new AppsAdapter());</p>
+
+<p>		mGrid.setOnItemClickListener(listener);<br />
+	}</p>
+
+<p>	private void loadApps() {<br />
+		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);<br />
+		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);</p>
+
+<p>		mApps = getPackageManager().queryIntentActivities(mainIntent, 0);<br />
+	}</p>
+
+<p>	public class AppsAdapter extends BaseAdapter {<br />
+		public AppsAdapter() {<br />
+		}</p>
+
+<p>		public View getView(int position, View convertView, ViewGroup parent) {<br />
+			ImageView i;</p>
+
+<p>			if (convertView == null) {<br />
+				i = new ImageView(MainActivity.this);<br />
+				i.setScaleType(ImageView.ScaleType.FIT_CENTER);<br />
+				i.setLayoutParams(new GridView.LayoutParams(120, 120));<br />
+				i.setPadding(12, 12, 12, 12);<br />
+			} else {<br />
+				i = (ImageView) convertView;<br />
+			}</p>
+
+<p>			ResolveInfo info = mApps.get(position);<br />
+			i.setImageDrawable(info.activityInfo.loadIcon(getPackageManager()));</p>
+
+<p>			return i;<br />
+		}</p>
+
+<p>		public final int getCount() {<br />
+			return mApps.size();<br />
+		}</p>
+
+<p>		public final Object getItem(int position) {<br />
+			return mApps.get(position);<br />
+		}</p>
+
+<p>		public final long getItemId(int position) {<br />
+			return position;<br />
+		}<br />
+	}</p>
+
+<p>	@Override<br />
+	public boolean onKeyDown(int keyCode, KeyEvent event) {<br />
+		if (keyCode == KeyEvent.KEYCODE_BACK) {<br />
+			return true;<br />
+		} else {<br />
+			return super.onKeyDown(keyCode, event);<br />
+		}<br />
+	}<br />
+}
+[/java]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Visit Android market in app with market:// link]]></title>
+    <link href="http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link/"/>
+    <updated>2013-01-06T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link</id>
+    <content type="html"><![CDATA[<p>Using Intent in your Activity to visit Android market:</p>
+
+<p>[java]Intent installIntent = new Intent(&#8220;android.intent.action.VIEW&#8221;); <br />
+installIntent.setData(Uri.parse(&#8220;market://search?q=pname:&#8221;+packageName)); <br />
+startActivity(installIntent);[/java]</p>
+
+<p>Visit a app&#8217;s details by package name:<br />
+ 
+<pre class="lang:default decode:true ">market://details?id=&lt;app package name&gt;
+Example：market://details?id=com.son1c.adsense.lite</pre> </p>
+
+<p>Search a app by package name:<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=pname:&lt;app package name&gt;
+Example：market://search?q=pname:com.son1c.adsense.lite</pre> </p>
+
+<p>Search apps by developer name:<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=pub:&lt;developer name&gt;
+Example：market://search?q=pub:Jack</pre> </p>
+
+<p>Search apps by keyword<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=&lt;keyword&gt;
+Example：market://search?q=adsense</pre> </p>
+
+<p>Union search<br />
+Using multi search conditions<br />
+ 
+<pre class="lang:default decode:true ">Example：market://search?q=adsense pub:Jack</pre> </p>
+
+<p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to disable Android home menu back search keys out of apps or change keys layout]]></title>
+    <link href="http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/"/>
+    <updated>2012-12-03T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout</id>
+    <content type="html"><![CDATA[<p>If you want to disable the home/menu/back/search keys or key layout in your apps. You can add some code response the key press event. But if you want to do this out of your apps, you can change the config of system key layout. Of course you have to root first.</p>
+
+<p>You can find *.kl files in /system/usr/keylayout .</p>
+
+<p>Here are some instructions for the files.</p>
+
+<p>AVRCP.kl                    - Key layout used for Bluetooth AVRCP support.<br />
+Generic.kl                  - Generic key layout file for full alphabetic US English PC style external keyboards.<br />
+qwerty.kl                   - Emulator keyboard layout #1.<br />
+Vendor_045e_Product_028e.kl - XBox 360 USB Controller<br />
+Vendor_046d_Product_c216.kl - Logitech Dual Action Controller<br />
+Vendor_046d_Product_c294.kl - Logitech G25 Racing Wheel (in Compatibility Mode)<br />
+Vendor_046d_Product_c299.kl - Logitech G25 Racing Wheel (in Native Mode)<br />
+Vendor_046d_Product_c532.kl - Logitech Revue Wireless keyboard<br />
+Vendor_054c_Product_0268.kl - Sony Playstation(R)3 Controller<br />
+Vendor_05ac_Product_0239.kl - Apple Wireless Keyboard<br />
+Vendor_22b8_Product_093d.kl - Motorola Bluetooth Wireless Keyboard.</p>
+
+<p>Edit one .kl file for example.</p>
+
+<p><a href="http://www.jack-y.com/wp-content/uploads/2012/12/787_120516170328_1.jpg"><img src="http://www.jack-y.com/wp-content/uploads/2012/12/787_120516170328_1.jpg" alt="" title="787_120516170328_1" width="480" height="854" class="alignnone size-full wp-image-92" /></a></p>
+
+<p>Here is one line of .kl file.</p>
+
+<p>key  158  BACK      WAKE_DROPPED</p>
+
+<p>Explain:<br />
+158          - key code<br />
+BACK         - key function<br />
+WAKE         - wake up device with sending message to apps<br />
+WAKE_DROPPED - wake up device without sending message to apps</p>
+
+<p>We can change BACK to MENU, save the file, restart. Than BACK key changed to MENU key.</p>
+
+<p>So than we can disable any keys or key layout of your device.<br />
+ </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using gdb debug php core dump file]]></title>
+    <link href="http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file/"/>
+    <updated>2012-09-27T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file</id>
+    <content type="html"><![CDATA[<p>1.Using command <em>file</em> you can find this corefile was created by <em>php-cgi</em>
+[shell]<br />
+$ file corefile<br />
+corefile: ELF 64-bit LSB core file AMD x86-64, version 1 (SYSV), SVR4-style, from &#8216;php-cgi&#8217;<br />
+[/shell]</p>
+
+<p>2.Using command gdb debug. First parameter is the path of bin creator. Second parameter is core file path.<br />
+[shell]<br />
+$ gdb ~/php/bin/php-cgi corefile<br />
+[/shell]<br />
+Then lots of stack information and (gdb) shows up.</p>
+
+<p>3.Load source files.<br />
+[shell]<br />
+(gdb)soucre ~/php-5.2.8/.gdbinit<br />
+[/shell]<br />
+ 
+3、Using command <em>zbacktrace</em> shows stack.<br />
+[shell]<br />
+(gdb) zbacktrace<br />
+[/shell]<br />
+[shell]<br />
+[0xbfff9750] ral() /home/work/php/phplib/Base.php:63<br />
+[0xbfff9900] __call()<br />
+[0xbfff9d00] INCR() /home/work/app/models/service/data/RedisCount.php:45<br />
+[0xbfff9fe0] getCont() /home/work/app/models/service/page/userinfo/submit/Total.php:22<br />
+[0xbfffa190] process()<br />
+[0xbfffa510] call_user_func_array() /home/work/app/library/web/PageService.php:33<br />
+[0xbfffa7a0] execute() /home/work/app/actions/userinfo/submit/total.php:18<br />
+[0xbfffaa00] doExecute() /home/work/app/library/uibase/Action.php:40<br />
+[0xbfffabb0] execute()<br />
+[0xbfffb0e0] run() /home/work/webroot/index.php:10<br />
+[/shell]</p>
+
+<p>4、Using command bt<br />
+[shell]<br />
+(gdb) bt<br />
+[/shell]<br />
+[shell]<br />
+#0  0x000000302b807abc in pthread_mutex_lock () from /lib64/tls/libpthread.so.0<br />
+#1  0x0000002a9bf58564 in AutoLock (this=0x7fbfff7d50, lock=@0x2a9d7a1af0) at ./util/Lock.h:36<br />
+#2  0x0000002a9bf5a91a in forum::HealthyStatus::getSelectRate (this=0x2a9d7a1a98, timeout=100, checkTime=3, minRate=0.10000000000000001)<br />
+    at filter/HealthyFilter.cpp:80<br />
+#3  0x0000002a9bf5b29b in forum::HealthyFilter::doFilter (this=0x1dd88e0, request=0x7fbfff8610) at filter/HealthyFilter.cpp:239<br />
+#4  0x0000002a9bf55f9c in forum::ChainFilter::doFilter (this=0x1dd86c0, request=0x7fbfff8610) at filter/ChainFilter.cpp:19<br />
+#5  0x0000002a9bf537ba in forum::CamelSuperStrategy::fetchServer (this=0x1ddd850, req=0x7fbfff8f00) at strategy/CamelSuperStrategy.cpp:140<br />
+#6  0x0000002a9bf39753 in odp::CamelService::fetchServer (this=0x1dd7d00, req=0x7fbfff9420) at CamelService.cpp:480<br />
+#7  0x0000002a9bf47e2b in odp::WorkerManager::fetchServer (this=0x13c6210, serviceName=0x2aa017c088 &#8220;Redis_pic_counter&#8221;, req=0x7fbfff9420) at WorkerManager.cpp:282<br />
+#8  0x0000002a9bee02a0 in camel_call (service=0x2aa017c088 &#8220;Redis_pic_counter&#8221;, method=0x2aa01735a8 &#8220;INCR&#8221;, request_value=0x2aa01735e8, return_value=0x2aa0179598,<br />
+    extra=0x2aa0174720) at worker_proc.cpp:764<br />
+#9  0x0000002a9bed9474 in zif_ral (ht=4, return_value=0x2aa0179598, return_value_ptr=0x0, this_ptr=0x0, return_value_used=1) at camel.cpp:331<br />
+#10 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfff9750, return_value_used=1)<br />
+    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
+#11 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9750)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
+#12 0x000000000076739f in execute (op_array=0x2aa017a710) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#13 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa017a710) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#14 0x000000000073b37b in zend_call_function (fci=0x7fbfff9a20, fci_cache=Variable &#8220;fci_cache&#8221; is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
+#15 0x000000000075b2cb in zend_call_method (object_pp=0x7fbfff9ae0, obj_ce=0x2aa0178bf0, fn_proxy=0x2aa0178dd0, function_name=0xc7c52f &#8220;__call&#8221;, function_name_len=6,<br />
+    retval_ptr_ptr=0x7fbfff9ae8, param_count=729840304, arg1=0x2aa016d948, arg2=0x2aa016c948)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_interfaces.c:88<br />
+#16 0x0000000000763389 in zend_std_call_user_call (ht=Variable &#8220;ht&#8221; is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_object_handlers.c:673<br />
+#17 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfff9d00, return_value_used=1)<br />
+    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
+#18 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9d00)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
+#19 0x000000000076739f in execute (op_array=0x2aa01729c8) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#20 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa01729c8) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#21 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9fe0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
+#22 0x000000000076739f in execute (op_array=0x2aa0166b80) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#23 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa0166b80) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#24 0x000000000073b37b in zend_call_function (fci=0x7fbfffa250, fci_cache=Variable &#8220;fci_cache&#8221; is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
+#25 0x000000000073c2b6 in call_user_function_ex (function_table=Variable &#8220;function_table&#8221; is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:650<br />
+#26 0x0000000000696881 in zif_call_user_func_array (ht=Variable &#8220;ht&#8221; is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/ext/standard/basic_functions.c:5217<br />
+#27 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfffa510, return_value_used=1)<br />
+    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
+#28 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffa510)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
+&#8212;Type <return> to continue, or q <return> to quit&#8212;<br />
+#29 0x000000000076739f in execute (op_array=0x2aa016cc70) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#30 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa016cc70) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#31 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffa7a0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
+#32 0x000000000076739f in execute (op_array=0x2a9ff05740) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#33 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a9ff05740) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#34 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffaa00)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
+#35 0x000000000076739f in execute (op_array=0x2a9ff19428) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#36 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a9ff19428) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#37 0x000000000073b37b in zend_call_function (fci=0x7fbfffacd0, fci_cache=Variable &#8220;fci_cache&#8221; is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
+#38 0x000000000075b2cb in zend_call_method (object_pp=0x7fbfffadc0, obj_ce=0x2a9ff05430, fn_proxy=0x0, function_name=0x2a98d14a27 &#8220;execute&#8221;, function_name_len=7,<br />
+    retval_ptr_ptr=0x7fbfffade0, param_count=729840304, arg1=0x0, arg2=0x0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_interfaces.c:88<br />
+#39 0x0000002a98cfe3ae in ap_dispatcher_handle (dispatcher=0x2a95c36c40, request=0x2a95c3b2e0, response=0x2a95c3efd0, view=0x2a9fefd6d0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_dispatcher.c:683<br />
+#40 0x0000002a98cfea5c in ap_dispatcher_dispatch (dispatcher=0x2a95c36c40)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_dispatcher.c:878<br />
+#41 0x0000002a98cfbb5d in zim_ap_application_run (ht=Variable &#8220;ht&#8221; is not available.<br />
+) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_application.c:438<br />
+#42 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfffb0e0, return_value_used=0)<br />
+    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
+#43 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffb0e0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
+#44 0x000000000076739f in execute (op_array=0x2a95c34990) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#45 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a95c34990) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#46 0x0000000000749128 in zend_execute_scripts (type=8, retval=0x0, file_count=3)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend.c:1134<br />
+#47 0x00000000007080c6 in php_execute_script (primary_file=0x7fbffffa80)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/main/main.c:2037<br />
+#48 0x00000000007d7494 in main (argc=4, argv=0x7fbffffbd8) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/sapi/cgi/cgi_main.c:2120<br />
+[/shell]<br />
+ 
+5、Using command f could select and print a stack frame.<br />
+[shell]<br />
+(gdb) f 30<br />
+[/shell]<br />
+[shell]<br />
+#30 0x00000000007672df in execute (op_array=0x2aa00101f8) at /home/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+92  in /home/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h<br />
+[/shell]<br />
+ 
+6、Using command p could print val<br />
+[shell]<br />
+(gdb) p *op_array<br />
+[/shell]<br />
+[shell]<br />
+$8 = {type = 2 &#8216;\002&#8217;, function_name = 0x2a9f32e520 &#8220;process&#8221;, scope = 0x2aa000fe80, fn_flags = 66048, prototype = 0x0, num_args = 2, required_num_args = 2, arg_info = 0x2a9f32e4b0, <br />
+  pass_rest_by_reference = 0 &#8216;\0&#8217;, return_reference = 0 &#8216;\0&#8217;, refcount = 0x2a98ab0450, opcodes = 0x2a9f32e528, last = 512, size = 512, vars = 0x2a9f33d8a8, last_var = 17, size_var = 0, T = 34, <br />
+  brk_cont_array = 0x2a9f33d828, last_brk_cont = 8, current_brk_cont = 4294967295, try_catch_array = 0x0, last_try_catch = 0, static_variables = 0x0, start_op = 0x0, backpatch_count = 0, <br />
+  done_pass_two = 1 &#8216;\001&#8217;, uses_this = 0 &#8216;\0&#8217;, filename = 0x2a9f32e069 &#8220;/home/app/webapp/models/service/page/user/WebIndex.php&#8221;, line_start = 19, line_end = 205, doc_comment = 0x0, <br />
+  doc_comment_len = 0, reserved = {0x0, 0x0, 0x0, 0x0}}<br />
+[/shell]</return></return></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to change the path to the active Xcode installation for your machine]]></title>
+    <link href="http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/"/>
+    <updated>2012-07-13T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine</id>
+    <content type="html"><![CDATA[<p>I updated my Mac OS X to 10.8GM today. Everything was fine. And then update Xcode to 4.4GM for 4.3 doesn&#8217;t support 10.8. I made a mistake that I run Xcode.app in dmg file. Then a setup wizard showed up. I press next next next&#8230; Suddenly I remind I should move the app to Application folder first. But the setup wizard can&#8217;t show up again. And the path of xcode had be set to /Volumes/Xcode.app/&#8230;<br />
+How to change it to the right path? I googled it there is a command named xcode-select.
+<pre>
+$ xcode-select
+xcode-select: Error: no command option given.</pre></p>
+
+<p>xcode-select: Report or change the path to the active<br />
+              Xcode installation for this machine.</p>
+
+<p>Usage: xcode-select &#8211;print-path<br />
+           Prints the path of the active Xcode folder<br />
+   or: xcode-select &#8211;switch <xcode_path>
+           Sets the path for the active Xcode folder<br />
+   or: xcode-select &#8211;version<br />
+           Prints the version of xcode-select
+
+<pre>
+$ xcode-select --print-path
+/Volumes/Xcode/Xcode44-DP7.app/Contents/Developer
+</pre>
+<pre>
+$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
+</pre>
+Everything goes fine now.</xcode_path></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to develop Mac OS X apps using HTML5]]></title>
+    <link href="http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5/"/>
+    <updated>2012-05-28T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5</id>
+    <content type="html"><![CDATA[<p>HTML5 is very popular now. Lots of apps in mobile using HTML5 framework like PhoneGap, Sencha, Trigger, jQueryMobile&#8230;<br />
+If you want to develop Mac apps, you have to learn Objective-C and cocoa. But it is difficult for a beginner or web designer. So how about using HTML5? We can add a WebView on the app and display local html in it.<br />
+Let&#8217;s start!</p>
+
+<p>1. Create a Mac OS X Cocoa Application<br />
+Find it in XCode -&gt; File -&gt; New -&gt; Project -&gt; Mac OS X Application -&gt; Cocoa Application
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/create_mac_app.png"><img class="alignnone size-full wp-image-38" title="create_mac_app" src="http://www.jack-y.com/wp-content/uploads/2012/05/create_mac_app.png" alt="" width="100%" /></a></p>
+
+<p>2. Add [WebKit.framework] in your [Link Binary With Libraries].</p>
+
+<p>3. Copy your web files like .html, .js, images to your project. If you can&#8217;t see them in your XCode, you should drop them from Finder to XCode.<br />
+I did some tests. These web files should be used like in the same path. I think it&#8217;s because the files in [Copy Bundle Resources] of [Build Phases] are in the same level.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/build_phases.png"><img class="alignnone size-full wp-image-39" title="build_phases" src="http://www.jack-y.com/wp-content/uploads/2012/05/build_phases.png" alt="" width="100%" /></a></p>
+
+<p>4. Open your MainMenu.xib and drop a WebView in the interface. Make the size suit your app.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/add_webview.png"><img title="add_webview" src="http://www.jack-y.com/wp-content/uploads/2012/05/add_webview.png" alt="" width="100%" /></a></p>
+
+<p>5. Link the WebView to your AppDelegate.h. The code in AppDelegate.h:<br />
+[cpp]<br />
+#import &#8220;Cocoa/Cocoa.h&#8221;<br />
+#import &#8220;WebKit/WebKit.h&#8221;</p>
+
+<p>@interface AppDelegate : NSObject {<br />
+NSWindow *window;<br />
+IBOutlet WebView *webView;<br />
+}</p>
+
+<p>@property (assign) IBOutlet NSWindow *window;<br />
+@property (nonatomic, retain) IBOutlet WebView *webView;</p>
+
+<p>@end<br />
+[/cpp]</p>
+
+<p>6. Open your web htm file when the app start. Insert the open file code in AppDelegate.m:<br />
+[cpp]<br />
+#import &#8220;AppDelegate.h&#8221;</p>
+
+<p>@implementation AppDelegate</p>
+
+<p>@synthesize window;<br />
+@synthesize webView;</p>
+
+<p>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification<br />
+{
+// Insert code here to initialize your application<br />
+}</p>
+
+<p>- (void)awakeFromNib {<br />
+NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];<br />
+NSString *htmlPath = [resourcesPath stringByAppendingString:@&#8221;/aero.html&#8221;];<br />
+[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:htmlPath]]];<br />
+}
+@end<br />
+[/cpp]</p>
+
+<p>That&#8217;s it. Running like a native app.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="http://www.jack-y.com/wp-content/uploads/2012/05/web_app.png" alt="" width="100%" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to deploy app to your iOS device without certificate key]]></title>
+    <link href="http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate/"/>
+    <updated>2012-05-12T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate</id>
+    <content type="html"><![CDATA[<p>As we all know, it&#8217;s cost $99 to become a apple developer. But sometimes we have to make sure the app is ready. So how to deploy app before we have a certificate private key? Here we go!</p>
+
+<p>My test environment is:
+<pre>1、Macbook Air 2011 13'' + Mac OS X Lion 10.7.4 + XCode 4.3.2 + iOS SDK 5.1
+2、iPad 1 + iOS 5.0.1</pre>
+First, modify your SDK setting<br />
+[shell]cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/</p>
+
+<p>sudo vi SDKSettings.plist[/shell]<br />
+Find the key named <em>CODE_SIGNING_REQUIRED</em> and change its value to <em>NO</em></p>
+
+<p>Second, modify your project setting
+<pre>1、Select your project in the left [Project navigator]
+2、Select the [PROJECT] or [TARGETS]
+3、Select [Build Setting]
+4、Change the [Code Signing Identity]'s children to [Don't Code Sign]</pre>
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/deploy_without_certificate.png"><img class="alignnone size-full wp-image-24" title="deploy_without_certificate" src="http://www.jack-y.com/wp-content/uploads/2012/05/deploy_without_certificate.png" alt="" width="100%" /></a></p>
+
+<p>Third, connect your iOS device to your Mac. The version of iOS between my iPad(5.0) and SDK(5.1) is different, so your device will not show up. If then, you should change the [iOS Deployment Target] in [Build Setting] to your device&#8217;s version(mine is 5.0). </p>
+
+<p>Finally, Select your device instead of the simulator and RUN.</p>
+
+<p>Enjoy it!</p>
+]]></content>
+  </entry>
   
 </feed>

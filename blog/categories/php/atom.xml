@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PHP | Jack‘s Blog]]></title>
+  <link href="http://yangruixuan.github.io/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://yangruixuan.github.io/"/>
+  <updated>2013-08-26T19:01:18+08:00</updated>
+  <id>http://yangruixuan.github.io/</id>
+  <author>
+    <name><![CDATA[Jack Yang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using gdb debug php core dump file]]></title>
+    <link href="http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file/"/>
+    <updated>2012-09-27T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file</id>
+    <content type="html"><![CDATA[<p>1.Using command <em>file</em> you can find this corefile was created by <em>php-cgi</em>
+[shell]<br />
+$ file corefile<br />
+corefile: ELF 64-bit LSB core file AMD x86-64, version 1 (SYSV), SVR4-style, from 'php-cgi'<br />
+[/shell]</p>
+
+
+
+
+<p>2.Using command gdb debug. First parameter is the path of bin creator. Second parameter is core file path.<br />
+[shell]<br />
+$ gdb ~/php/bin/php-cgi corefile<br />
+[/shell]<br />
+Then lots of stack information and (gdb) shows up.</p>
+
+
+
+
+<p>3.Load source files.<br />
+[shell]<br />
+(gdb)soucre ~/php-5.2.8/.gdbinit<br />
+[/shell]<br />
+ 
+3、Using command <em>zbacktrace</em> shows stack.<br />
+[shell]<br />
+(gdb) zbacktrace<br />
+[/shell]<br />
+[shell]<br />
+[0xbfff9750] ral() /home/work/php/phplib/Base.php:63<br />
+[0xbfff9900] __call()<br />
+[0xbfff9d00] INCR() /home/work/app/models/service/data/RedisCount.php:45<br />
+[0xbfff9fe0] getCont() /home/work/app/models/service/page/userinfo/submit/Total.php:22<br />
+[0xbfffa190] process()<br />
+[0xbfffa510] call_user_func_array() /home/work/app/library/web/PageService.php:33<br />
+[0xbfffa7a0] execute() /home/work/app/actions/userinfo/submit/total.php:18<br />
+[0xbfffaa00] doExecute() /home/work/app/library/uibase/Action.php:40<br />
+[0xbfffabb0] execute()<br />
+[0xbfffb0e0] run() /home/work/webroot/index.php:10<br />
+[/shell]</p>
+
+
+
+
+<p>4、Using command bt<br />
+[shell]<br />
+(gdb) bt<br />
+[/shell]<br />
+[shell]<br />
+#0  0x000000302b807abc in pthread_mutex_lock () from /lib64/tls/libpthread.so.0<br />
+#1  0x0000002a9bf58564 in AutoLock (this=0x7fbfff7d50, lock=@0x2a9d7a1af0) at ./util/Lock.h:36<br />
+#2  0x0000002a9bf5a91a in forum::HealthyStatus::getSelectRate (this=0x2a9d7a1a98, timeout=100, checkTime=3, minRate=0.10000000000000001)<br />
+    at filter/HealthyFilter.cpp:80<br />
+#3  0x0000002a9bf5b29b in forum::HealthyFilter::doFilter (this=0x1dd88e0, request=0x7fbfff8610) at filter/HealthyFilter.cpp:239<br />
+#4  0x0000002a9bf55f9c in forum::ChainFilter::doFilter (this=0x1dd86c0, request=0x7fbfff8610) at filter/ChainFilter.cpp:19<br />
+#5  0x0000002a9bf537ba in forum::CamelSuperStrategy::fetchServer (this=0x1ddd850, req=0x7fbfff8f00) at strategy/CamelSuperStrategy.cpp:140<br />
+#6  0x0000002a9bf39753 in odp::CamelService::fetchServer (this=0x1dd7d00, req=0x7fbfff9420) at CamelService.cpp:480<br />
+#7  0x0000002a9bf47e2b in odp::WorkerManager::fetchServer (this=0x13c6210, serviceName=0x2aa017c088 "Redis_pic_counter", req=0x7fbfff9420) at WorkerManager.cpp:282<br />
+#8  0x0000002a9bee02a0 in camel_call (service=0x2aa017c088 "Redis_pic_counter", method=0x2aa01735a8 "INCR", request_value=0x2aa01735e8, return_value=0x2aa0179598,<br />
+    extra=0x2aa0174720) at worker_proc.cpp:764<br />
+#9  0x0000002a9bed9474 in zif_ral (ht=4, return_value=0x2aa0179598, return_value_ptr=0x0, this_ptr=0x0, return_value_used=1) at camel.cpp:331<br />
+#10 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfff9750, return_value_used=1)<br />
+    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
+#11 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9750)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
+#12 0x000000000076739f in execute (op_array=0x2aa017a710) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#13 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa017a710) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#14 0x000000000073b37b in zend_call_function (fci=0x7fbfff9a20, fci_cache=Variable "fci_cache" is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
+#15 0x000000000075b2cb in zend_call_method (object_pp=0x7fbfff9ae0, obj_ce=0x2aa0178bf0, fn_proxy=0x2aa0178dd0, function_name=0xc7c52f "__call", function_name_len=6,<br />
+    retval_ptr_ptr=0x7fbfff9ae8, param_count=729840304, arg1=0x2aa016d948, arg2=0x2aa016c948)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_interfaces.c:88<br />
+#16 0x0000000000763389 in zend_std_call_user_call (ht=Variable "ht" is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_object_handlers.c:673<br />
+#17 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfff9d00, return_value_used=1)<br />
+    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
+#18 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9d00)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
+#19 0x000000000076739f in execute (op_array=0x2aa01729c8) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#20 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa01729c8) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#21 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9fe0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
+#22 0x000000000076739f in execute (op_array=0x2aa0166b80) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#23 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa0166b80) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#24 0x000000000073b37b in zend_call_function (fci=0x7fbfffa250, fci_cache=Variable "fci_cache" is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
+#25 0x000000000073c2b6 in call_user_function_ex (function_table=Variable "function_table" is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:650<br />
+#26 0x0000000000696881 in zif_call_user_func_array (ht=Variable "ht" is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/ext/standard/basic_functions.c:5217<br />
+#27 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfffa510, return_value_used=1)<br />
+    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
+#28 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffa510)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
+---Type <return> to continue, or q <return> to quit---<br />
+#29 0x000000000076739f in execute (op_array=0x2aa016cc70) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#30 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa016cc70) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#31 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffa7a0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
+#32 0x000000000076739f in execute (op_array=0x2a9ff05740) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#33 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a9ff05740) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#34 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffaa00)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
+#35 0x000000000076739f in execute (op_array=0x2a9ff19428) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#36 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a9ff19428) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#37 0x000000000073b37b in zend_call_function (fci=0x7fbfffacd0, fci_cache=Variable "fci_cache" is not available.<br />
+)
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
+#38 0x000000000075b2cb in zend_call_method (object_pp=0x7fbfffadc0, obj_ce=0x2a9ff05430, fn_proxy=0x0, function_name=0x2a98d14a27 "execute", function_name_len=7,<br />
+    retval_ptr_ptr=0x7fbfffade0, param_count=729840304, arg1=0x0, arg2=0x0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_interfaces.c:88<br />
+#39 0x0000002a98cfe3ae in ap_dispatcher_handle (dispatcher=0x2a95c36c40, request=0x2a95c3b2e0, response=0x2a95c3efd0, view=0x2a9fefd6d0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_dispatcher.c:683<br />
+#40 0x0000002a98cfea5c in ap_dispatcher_dispatch (dispatcher=0x2a95c36c40)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_dispatcher.c:878<br />
+#41 0x0000002a98cfbb5d in zim_ap_application_run (ht=Variable "ht" is not available.<br />
+) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_application.c:438<br />
+#42 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfffb0e0, return_value_used=0)<br />
+    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
+#43 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffb0e0)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
+#44 0x000000000076739f in execute (op_array=0x2a95c34990) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+#45 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a95c34990) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
+#46 0x0000000000749128 in zend_execute_scripts (type=8, retval=0x0, file_count=3)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend.c:1134<br />
+#47 0x00000000007080c6 in php_execute_script (primary_file=0x7fbffffa80)<br />
+    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/main/main.c:2037<br />
+#48 0x00000000007d7494 in main (argc=4, argv=0x7fbffffbd8) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/sapi/cgi/cgi_main.c:2120<br />
+[/shell]<br />
+ 
+5、Using command f could select and print a stack frame.<br />
+[shell]<br />
+(gdb) f 30<br />
+[/shell]<br />
+[shell]<br />
+#30 0x00000000007672df in execute (op_array=0x2aa00101f8) at /home/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
+92  in /home/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h<br />
+[/shell]<br />
+ 
+6、Using command p could print val<br />
+[shell]<br />
+(gdb) p *op_array<br />
+[/shell]<br />
+[shell]<br />
+$8 = {type = 2 '\002', function_name = 0x2a9f32e520 "process", scope = 0x2aa000fe80, fn_flags = 66048, prototype = 0x0, num_args = 2, required_num_args = 2, arg_info = 0x2a9f32e4b0, <br />
+  pass_rest_by_reference = 0 '\0', return_reference = 0 '\0', refcount = 0x2a98ab0450, opcodes = 0x2a9f32e528, last = 512, size = 512, vars = 0x2a9f33d8a8, last_var = 17, size_var = 0, T = 34, <br />
+  brk_cont_array = 0x2a9f33d828, last_brk_cont = 8, current_brk_cont = 4294967295, try_catch_array = 0x0, last_try_catch = 0, static_variables = 0x0, start_op = 0x0, backpatch_count = 0, <br />
+  done_pass_two = 1 '\001', uses_this = 0 '\0', filename = 0x2a9f32e069 "/home/app/webapp/models/service/page/user/WebIndex.php", line_start = 19, line_end = 205, doc_comment = 0x0, <br />
+  doc_comment_len = 0, reserved = {0x0, 0x0, 0x0, 0x0}}<br />
+[/shell]</return></return></p>
+
+]]></content>
+  </entry>
+  
+</feed>

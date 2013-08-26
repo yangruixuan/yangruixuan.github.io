@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Jack‘s Blog</title>
+  <title>Visit Android market in app with market:// link - Jack‘s Blog</title>
   <meta name="author" content="Jack Yang">
 
   
-  <meta name="description" content="Blog Archive 2013 Install PhpBeautifier plugin for Sublime text 2 in Mac
-Jan 17 2013 posted in Mac OS X How to create a simple Launcher app for &hellip;">
+  <meta name="description" content="Using Intent in your Activity to visit Android market: [java]Intent installIntent = new Intent(&#8220;android.intent.action.VIEW&#8221;); &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ Jan 17 2013 posted in Mac OS X How to create a simple Launcher app for &hellip;"
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yangruixuan.github.io/blog/archives">
+  <link rel="canonical" href="http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Jack‘s Blog" type="application/atom+xml">
@@ -65,128 +64,111 @@ Jan 17 2013 posted in Mac OS X How to create a simple Launcher app for &hellip;"
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">Visit Android Market in App With Market:// Link</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T00:00:00+08:00" pubdate data-updated="true">2013-01-06</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p>Using Intent in your Activity to visit Android market:</p>
 
-  
-  <h2>2013</h2>
+<p>[java]Intent installIntent = new Intent(&#8220;android.intent.action.VIEW&#8221;); <br />
+installIntent.setData(Uri.parse(&#8220;market://search?q=pname:&#8221;+packageName)); <br />
+startActivity(installIntent);[/java]</p>
 
-<article>
-  
-<h1><a href="/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/">Install PhpBeautifier plugin for Sublime text 2 in Mac</a></h1>
-<time datetime="2013-01-17T00:00:00+08:00" pubdate><span class='month'>Jan</span> <span class='day'>17</span> <span class='year'>2013</span></time>
+<p>Visit a app&#8217;s details by package name:<br />
+ 
+<pre class="lang:default decode:true ">market://details?id=&lt;app package name&gt;
+Example：market://details?id=com.son1c.adsense.lite</pre> </p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/mac-os-x/'>Mac OS X</a></span>
-</footer>
+<p>Search a app by package name:<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=pname:&lt;app package name&gt;
+Example：market://search?q=pname:com.son1c.adsense.lite</pre> </p>
 
+<p>Search apps by developer name:<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=pub:&lt;developer name&gt;
+Example：market://search?q=pub:Jack</pre> </p>
 
-</article>
+<p>Search apps by keyword<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=&lt;keyword&gt;
+Example：market://search?q=adsense</pre> </p>
 
+<p>Union search<br />
+Using multi search conditions<br />
+ 
+<pre class="lang:default decode:true ">Example：market://search?q=adsense pub:Jack</pre> </p>
 
-
-<article>
-  
-<h1><a href="/blog/how-to-create-a-simple-launcher-app-for-android/">How to create a simple Launcher app for Android</a></h1>
-<time datetime="2013-01-10T00:00:00+08:00" pubdate><span class='month'>Jan</span> <span class='day'>10</span> <span class='year'>2013</span></time>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/visit-android-market-in-app-with-market-link/">Visit Android market in app with market:// link</a></h1>
-<time datetime="2013-01-06T00:00:00+08:00" pubdate><span class='month'>Jan</span> <span class='day'>06</span> <span class='year'>2013</span></time>
-
-
-</article>
-
-
-
-  
-  <h2>2012</h2>
-
-<article>
-  
-<h1><a href="/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/">How to disable Android home menu back search keys out of apps or change keys layout</a></h1>
-<time datetime="2012-12-03T00:00:00+08:00" pubdate><span class='month'>Dec</span> <span class='day'>03</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/android/'>Android</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/using-gdb-debug-php-core-dump-file/">Using gdb debug php core dump file</a></h1>
-<time datetime="2012-09-27T00:00:00+08:00" pubdate><span class='month'>Sep</span> <span class='day'>27</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/php/'>PHP</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/">How to change the path to the active Xcode installation for your machine</a></h1>
-<time datetime="2012-07-13T00:00:00+08:00" pubdate><span class='month'>Jul</span> <span class='day'>13</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/mac-os-x/'>Mac OS X</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/how-to-develop-mac-os-x-apps-using-html5/">How to develop Mac OS X apps using HTML5</a></h1>
-<time datetime="2012-05-28T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>28</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/mac-os-x/'>Mac OS X</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/howto-deploy-app-to-your-ios-device-without-certificate/">How to deploy app to your iOS device without certificate key</a></h1>
-<time datetime="2012-05-12T00:00:00+08:00" pubdate><span class='month'>May</span> <span class='day'>12</span> <span class='year'>2012</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/ios/'>iOS</a></span>
-</footer>
-
-
-</article>
-
+<p></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Jack Yang</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T00:00:00+08:00" pubdate data-updated="true">2013-01-06</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link/" data-via="" data-counturl="http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/" title="Previous Post: How to disable Android home menu back search keys out of apps or change keys layout">&laquo; How to disable Android home menu back search keys out of apps or change keys layout</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/how-to-create-a-simple-launcher-app-for-android/" title="Next Post: How to create a simple Launcher app for Android">How to create a simple Launcher app for Android &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>

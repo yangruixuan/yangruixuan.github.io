@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mac OS X | Jack‘s Blog]]></title>
+  <link href="http://yangruixuan.github.io/blog/categories/mac-os-x/atom.xml" rel="self"/>
+  <link href="http://yangruixuan.github.io/"/>
+  <updated>2013-08-26T19:01:18+08:00</updated>
+  <id>http://yangruixuan.github.io/</id>
+  <author>
+    <name><![CDATA[Jack Yang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Install PhpBeautifier plugin for Sublime text 2 in Mac]]></title>
+    <link href="http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/"/>
+    <updated>2013-01-17T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac</id>
+    <content type="html"><![CDATA[<p>1. Install PhpBeautifier from pear channel : sudo pear install --alldeps channel://pear.php.net/php_beautifier-0.1.15</p>
+
+
+
+
+<p>2. Install PhpBeautifier plugin in Sublime text. Press cmd+shift+p and select Package Control:Install Package. Then select PhpBeautifier.</p>
+
+
+
+
+<p><img class="alignnone size-full wp-image-139" alt="sublime_package_install" src="http://www.jack-y.com/wp-content/uploads/2013/01/sublime_package_install.png" width="601" height="93" /></p>
+
+
+
+
+<p>3. Select Browse Packages... in menu. Find PhpBeautifier folder and edit php_beautifier.py in it.</p>
+
+
+
+
+<p><a href="http://www.jack-y.com/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/sublime_menu_package/" rel="attachment wp-att-138"><img class="alignnone size-full wp-image-138" alt="sublime_menu_package" src="http://www.jack-y.com/wp-content/uploads/2013/01/sublime_menu_package.png" width="469" height="307" /></a></p>
+
+
+
+
+<p>4. Edit line in php_beautifier.py</p>
+
+
+
+
+<p>cmd = "php_beautifier"</p>
+
+
+
+
+<p>to</p>
+
+
+
+
+<p>cmd = "/Users/username/pear/bin/php_beautifier"</p>
+
+
+
+
+<p>5. Edit Pear.filter.php , phpBB.filter.php in /Users/username/pear/share/pear/PHP/Beautifier/</p>
+
+
+
+
+<p>comment this line</p>
+
+
+
+
+<p>require_once("PEAR/Config.php");</p>
+
+
+
+
+<p>6. Press cmd+shift+p and select Format:Php</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to change the path to the active Xcode installation for your machine]]></title>
+    <link href="http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/"/>
+    <updated>2012-07-13T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine</id>
+    <content type="html"><![CDATA[<p>I updated my Mac OS X to 10.8GM today. Everything was fine. And then update Xcode to 4.4GM for 4.3 doesn't support 10.8. I made a mistake that I run Xcode.app in dmg file. Then a setup wizard showed up. I press next next next... Suddenly I remind I should move the app to Application folder first. But the setup wizard can't show up again. And the path of xcode had be set to /Volumes/Xcode.app/...<br />
+How to change it to the right path? I googled it there is a command named xcode-select.
+<pre>
+$ xcode-select
+xcode-select: Error: no command option given.</pre></p>
+
+
+
+
+<p>xcode-select: Report or change the path to the active<br />
+              Xcode installation for this machine.</p>
+
+
+
+
+<p>Usage: xcode-select --print-path<br />
+           Prints the path of the active Xcode folder<br />
+   or: xcode-select --switch <xcode_path>
+           Sets the path for the active Xcode folder<br />
+   or: xcode-select --version<br />
+           Prints the version of xcode-select
+
+<pre>
+$ xcode-select --print-path
+/Volumes/Xcode/Xcode44-DP7.app/Contents/Developer
+</pre>
+<pre>
+$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/
+</pre>
+Everything goes fine now.</xcode_path></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to develop Mac OS X apps using HTML5]]></title>
+    <link href="http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5/"/>
+    <updated>2012-05-28T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5</id>
+    <content type="html"><![CDATA[<p>HTML5 is very popular now. Lots of apps in mobile using HTML5 framework like PhoneGap, Sencha, Trigger, jQueryMobile...<br />
+If you want to develop Mac apps, you have to learn Objective-C and cocoa. But it is difficult for a beginner or web designer. So how about using HTML5? We can add a WebView on the app and display local html in it.<br />
+Let's start!</p>
+
+
+
+
+<p>1. Create a Mac OS X Cocoa Application<br />
+Find it in XCode -&gt; File -&gt; New -&gt; Project -&gt; Mac OS X Application -&gt; Cocoa Application
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/create_mac_app.png"><img class="alignnone size-full wp-image-38" title="create_mac_app" src="http://www.jack-y.com/wp-content/uploads/2012/05/create_mac_app.png" alt="" width="100%" /></a></p>
+
+
+
+
+<p>2. Add [WebKit.framework] in your [Link Binary With Libraries].</p>
+
+
+
+
+<p>3. Copy your web files like .html, .js, images to your project. If you can't see them in your XCode, you should drop them from Finder to XCode.<br />
+I did some tests. These web files should be used like in the same path. I think it's because the files in [Copy Bundle Resources] of [Build Phases] are in the same level.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/build_phases.png"><img class="alignnone size-full wp-image-39" title="build_phases" src="http://www.jack-y.com/wp-content/uploads/2012/05/build_phases.png" alt="" width="100%" /></a></p>
+
+
+
+
+<p>4. Open your MainMenu.xib and drop a WebView in the interface. Make the size suit your app.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/add_webview.png"><img title="add_webview" src="http://www.jack-y.com/wp-content/uploads/2012/05/add_webview.png" alt="" width="100%" /></a></p>
+
+
+
+
+<p>5. Link the WebView to your AppDelegate.h. The code in AppDelegate.h:<br />
+[cpp]<br />
+#import "Cocoa/Cocoa.h"<br />
+#import "WebKit/WebKit.h"</p>
+
+
+
+
+<p>@interface AppDelegate : NSObject {<br />
+NSWindow *window;<br />
+IBOutlet WebView *webView;<br />
+}</p>
+
+
+
+
+<p>@property (assign) IBOutlet NSWindow *window;<br />
+@property (nonatomic, retain) IBOutlet WebView *webView;</p>
+
+
+
+
+<p>@end<br />
+[/cpp]</p>
+
+
+
+
+<p>6. Open your web htm file when the app start. Insert the open file code in AppDelegate.m:<br />
+[cpp]<br />
+#import "AppDelegate.h"</p>
+
+
+
+
+<p>@implementation AppDelegate</p>
+
+
+
+
+<p>@synthesize window;<br />
+@synthesize webView;</p>
+
+
+
+
+<p>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification<br />
+{
+// Insert code here to initialize your application<br />
+}</p>
+
+
+
+
+<p>- (void)awakeFromNib {<br />
+NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];<br />
+NSString *htmlPath = [resourcesPath stringByAppendingString:@"/aero.html"];<br />
+[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:htmlPath]]];<br />
+}
+@end<br />
+[/cpp]</p>
+
+
+
+
+<p>That's it. Running like a native app.
+<a href="http://www.jack-y.com/wp-content/uploads/2012/05/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="http://www.jack-y.com/wp-content/uploads/2012/05/web_app.png" alt="" width="100%" /></a></p>
+
+]]></content>
+  </entry>
+  
+</feed>

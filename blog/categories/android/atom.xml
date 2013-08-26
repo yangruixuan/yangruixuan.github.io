@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | Jack‘s Blog]]></title>
+  <link href="http://yangruixuan.github.io/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://yangruixuan.github.io/"/>
+  <updated>2013-08-26T19:01:18+08:00</updated>
+  <id>http://yangruixuan.github.io/</id>
+  <author>
+    <name><![CDATA[Jack Yang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to disable Android home menu back search keys out of apps or change keys layout]]></title>
+    <link href="http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/"/>
+    <updated>2012-12-03T00:00:00+08:00</updated>
+    <id>http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout</id>
+    <content type="html"><![CDATA[<p>If you want to disable the home/menu/back/search keys or key layout in your apps. You can add some code response the key press event. But if you want to do this out of your apps, you can change the config of system key layout. Of course you have to root first.</p>
+
+
+
+
+<p>You can find *.kl files in /system/usr/keylayout .</p>
+
+
+
+
+<p>Here are some instructions for the files.</p>
+
+
+
+
+<p>AVRCP.kl                    - Key layout used for Bluetooth AVRCP support.<br />
+Generic.kl                  - Generic key layout file for full alphabetic US English PC style external keyboards.<br />
+qwerty.kl                   - Emulator keyboard layout #1.<br />
+Vendor_045e_Product_028e.kl - XBox 360 USB Controller<br />
+Vendor_046d_Product_c216.kl - Logitech Dual Action Controller<br />
+Vendor_046d_Product_c294.kl - Logitech G25 Racing Wheel (in Compatibility Mode)<br />
+Vendor_046d_Product_c299.kl - Logitech G25 Racing Wheel (in Native Mode)<br />
+Vendor_046d_Product_c532.kl - Logitech Revue Wireless keyboard<br />
+Vendor_054c_Product_0268.kl - Sony Playstation(R)3 Controller<br />
+Vendor_05ac_Product_0239.kl - Apple Wireless Keyboard<br />
+Vendor_22b8_Product_093d.kl - Motorola Bluetooth Wireless Keyboard.</p>
+
+
+
+
+<p>Edit one .kl file for example.</p>
+
+
+
+
+<p><a href="http://www.jack-y.com/wp-content/uploads/2012/12/787_120516170328_1.jpg"><img src="http://www.jack-y.com/wp-content/uploads/2012/12/787_120516170328_1.jpg" alt="" title="787_120516170328_1" width="480" height="854" class="alignnone size-full wp-image-92" /></a></p>
+
+
+
+
+<p>Here is one line of .kl file.</p>
+
+
+
+
+<p>key  158  BACK      WAKE_DROPPED</p>
+
+
+
+
+<p>Explain:<br />
+158          - key code<br />
+BACK         - key function<br />
+WAKE         - wake up device with sending message to apps<br />
+WAKE_DROPPED - wake up device without sending message to apps</p>
+
+
+
+
+<p>We can change BACK to MENU, save the file, restart. Than BACK key changed to MENU key.</p>
+
+
+
+
+<p>So than we can disable any keys or key layout of your device.<br />
+ </p>
+
+]]></content>
+  </entry>
+  
+</feed>
