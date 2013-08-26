@@ -4,7 +4,7 @@
   <title><![CDATA[Jack's Blog]]></title>
   <link href="http://yangruixuan.github.io/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T20:38:03+08:00</updated>
+  <updated>2013-08-26T20:43:02+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -472,9 +472,12 @@ Finally the whole Activity code:
     <id>http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link</id>
     <content type="html"><![CDATA[<p>Using Intent in your Activity to visit Android market:</p>
 
-<p>[java]Intent installIntent = new Intent(&#8220;android.intent.action.VIEW&#8221;); <br />
-installIntent.setData(Uri.parse(&#8220;market://search?q=pname:&#8221;+packageName)); <br />
-startActivity(installIntent);[/java]</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Intent installIntent = new Intent("android.intent.action.VIEW");
+</span><span class='line'>installIntent.setData(Uri.parse("market://search?q=pname:"+packageName));
+</span><span class='line'>startActivity(installIntent);</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Visit a app&#8217;s details by package name:<br />
  
@@ -555,150 +558,238 @@ WAKE_DROPPED - wake up device without sending message to apps</p>
     <updated>2012-09-27T00:00:00+08:00</updated>
     <id>http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file</id>
     <content type="html"><![CDATA[<p>1.Using command <em>file</em> you can find this corefile was created by <em>php-cgi</em>
-[shell]<br />
-$ file corefile<br />
-corefile: ELF 64-bit LSB core file AMD x86-64, version 1 (SYSV), SVR4-style, from &#8216;php-cgi&#8217;<br />
-[/shell]</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ file corefile
+</span><span class='line'>corefile: ELF 64-bit LSB core file AMD x86-64, version 1 (SYSV), SVR4-style, from 'php-cgi'</span></code></pre></td></tr></table></div></figure></p>
 
-<p>2.Using command gdb debug. First parameter is the path of bin creator. Second parameter is core file path.<br />
-[shell]<br />
-$ gdb ~/php/bin/php-cgi corefile<br />
-[/shell]<br />
+<p>2.Using command gdb debug. First parameter is the path of bin creator. Second parameter is core file path.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gdb ~/php/bin/php-cgi corefile</span></code></pre></td></tr></table></div></figure>
 Then lots of stack information and (gdb) shows up.</p>
 
-<p>3.Load source files.<br />
-[shell]<br />
-(gdb)soucre ~/php-5.2.8/.gdbinit<br />
-[/shell]<br />
+<p>3.Load source files.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(gdb)soucre ~/php-5.2.8/.gdbinit</span></code></pre></td></tr></table></div></figure>
  
-3、Using command <em>zbacktrace</em> shows stack.<br />
-[shell]<br />
-(gdb) zbacktrace<br />
-[/shell]<br />
-[shell]<br />
-[0xbfff9750] ral() /home/work/php/phplib/Base.php:63<br />
-[0xbfff9900] __call()<br />
-[0xbfff9d00] INCR() /home/work/app/models/service/data/RedisCount.php:45<br />
-[0xbfff9fe0] getCont() /home/work/app/models/service/page/userinfo/submit/Total.php:22<br />
-[0xbfffa190] process()<br />
-[0xbfffa510] call_user_func_array() /home/work/app/library/web/PageService.php:33<br />
-[0xbfffa7a0] execute() /home/work/app/actions/userinfo/submit/total.php:18<br />
-[0xbfffaa00] doExecute() /home/work/app/library/uibase/Action.php:40<br />
-[0xbfffabb0] execute()<br />
-[0xbfffb0e0] run() /home/work/webroot/index.php:10<br />
-[/shell]</p>
+3、Using command <em>zbacktrace</em> shows stack.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(gdb) zbacktrace</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[0xbfff9750] ral() /home/work/php/phplib/Base.php:63
+</span><span class='line'>[0xbfff9900] __call()
+</span><span class='line'>[0xbfff9d00] INCR() /home/work/app/models/service/data/RedisCount.php:45
+</span><span class='line'>[0xbfff9fe0] getCont() /home/work/app/models/service/page/userinfo/submit/Total.php:22
+</span><span class='line'>[0xbfffa190] process()
+</span><span class='line'>[0xbfffa510] call_user_func_array() /home/work/app/library/web/PageService.php:33
+</span><span class='line'>[0xbfffa7a0] execute() /home/work/app/actions/userinfo/submit/total.php:18
+</span><span class='line'>[0xbfffaa00] doExecute() /home/work/app/library/uibase/Action.php:40
+</span><span class='line'>[0xbfffabb0] execute()
+</span><span class='line'>[0xbfffb0e0] run() /home/work/webroot/index.php:10</span></code></pre></td></tr></table></div></figure></p>
 
-<p>4、Using command bt<br />
-[shell]<br />
-(gdb) bt<br />
-[/shell]<br />
-[shell]<br />
-#0  0x000000302b807abc in pthread_mutex_lock () from /lib64/tls/libpthread.so.0<br />
-#1  0x0000002a9bf58564 in AutoLock (this=0x7fbfff7d50, lock=@0x2a9d7a1af0) at ./util/Lock.h:36<br />
-#2  0x0000002a9bf5a91a in forum::HealthyStatus::getSelectRate (this=0x2a9d7a1a98, timeout=100, checkTime=3, minRate=0.10000000000000001)<br />
-    at filter/HealthyFilter.cpp:80<br />
-#3  0x0000002a9bf5b29b in forum::HealthyFilter::doFilter (this=0x1dd88e0, request=0x7fbfff8610) at filter/HealthyFilter.cpp:239<br />
-#4  0x0000002a9bf55f9c in forum::ChainFilter::doFilter (this=0x1dd86c0, request=0x7fbfff8610) at filter/ChainFilter.cpp:19<br />
-#5  0x0000002a9bf537ba in forum::CamelSuperStrategy::fetchServer (this=0x1ddd850, req=0x7fbfff8f00) at strategy/CamelSuperStrategy.cpp:140<br />
-#6  0x0000002a9bf39753 in odp::CamelService::fetchServer (this=0x1dd7d00, req=0x7fbfff9420) at CamelService.cpp:480<br />
-#7  0x0000002a9bf47e2b in odp::WorkerManager::fetchServer (this=0x13c6210, serviceName=0x2aa017c088 &#8220;Redis_pic_counter&#8221;, req=0x7fbfff9420) at WorkerManager.cpp:282<br />
-#8  0x0000002a9bee02a0 in camel_call (service=0x2aa017c088 &#8220;Redis_pic_counter&#8221;, method=0x2aa01735a8 &#8220;INCR&#8221;, request_value=0x2aa01735e8, return_value=0x2aa0179598,<br />
-    extra=0x2aa0174720) at worker_proc.cpp:764<br />
-#9  0x0000002a9bed9474 in zif_ral (ht=4, return_value=0x2aa0179598, return_value_ptr=0x0, this_ptr=0x0, return_value_used=1) at camel.cpp:331<br />
-#10 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfff9750, return_value_used=1)<br />
-    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
-#11 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9750)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
-#12 0x000000000076739f in execute (op_array=0x2aa017a710) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
-#13 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa017a710) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
-#14 0x000000000073b37b in zend_call_function (fci=0x7fbfff9a20, fci_cache=Variable &#8220;fci_cache&#8221; is not available.<br />
-)
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
-#15 0x000000000075b2cb in zend_call_method (object_pp=0x7fbfff9ae0, obj_ce=0x2aa0178bf0, fn_proxy=0x2aa0178dd0, function_name=0xc7c52f &#8220;__call&#8221;, function_name_len=6,<br />
-    retval_ptr_ptr=0x7fbfff9ae8, param_count=729840304, arg1=0x2aa016d948, arg2=0x2aa016c948)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_interfaces.c:88<br />
-#16 0x0000000000763389 in zend_std_call_user_call (ht=Variable &#8220;ht&#8221; is not available.<br />
-)
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_object_handlers.c:673<br />
-#17 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfff9d00, return_value_used=1)<br />
-    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
-#18 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9d00)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
-#19 0x000000000076739f in execute (op_array=0x2aa01729c8) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
-#20 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa01729c8) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
-#21 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9fe0)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
-#22 0x000000000076739f in execute (op_array=0x2aa0166b80) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
-#23 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa0166b80) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
-#24 0x000000000073b37b in zend_call_function (fci=0x7fbfffa250, fci_cache=Variable &#8220;fci_cache&#8221; is not available.<br />
-)
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
-#25 0x000000000073c2b6 in call_user_function_ex (function_table=Variable &#8220;function_table&#8221; is not available.<br />
-)
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:650<br />
-#26 0x0000000000696881 in zif_call_user_func_array (ht=Variable &#8220;ht&#8221; is not available.<br />
-)
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/ext/standard/basic_functions.c:5217<br />
-#27 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfffa510, return_value_used=1)<br />
-    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
-#28 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffa510)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
-&#8212;Type <return> to continue, or q <return> to quit&#8212;<br />
-#29 0x000000000076739f in execute (op_array=0x2aa016cc70) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
-#30 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa016cc70) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
-#31 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffa7a0)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
-#32 0x000000000076739f in execute (op_array=0x2a9ff05740) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
-#33 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a9ff05740) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
-#34 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffaa00)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234<br />
-#35 0x000000000076739f in execute (op_array=0x2a9ff19428) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
-#36 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a9ff19428) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
-#37 0x000000000073b37b in zend_call_function (fci=0x7fbfffacd0, fci_cache=Variable &#8220;fci_cache&#8221; is not available.<br />
-)
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049<br />
-#38 0x000000000075b2cb in zend_call_method (object_pp=0x7fbfffadc0, obj_ce=0x2a9ff05430, fn_proxy=0x0, function_name=0x2a98d14a27 &#8220;execute&#8221;, function_name_len=7,<br />
-    retval_ptr_ptr=0x7fbfffade0, param_count=729840304, arg1=0x0, arg2=0x0)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_interfaces.c:88<br />
-#39 0x0000002a98cfe3ae in ap_dispatcher_handle (dispatcher=0x2a95c36c40, request=0x2a95c3b2e0, response=0x2a95c3efd0, view=0x2a9fefd6d0)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_dispatcher.c:683<br />
-#40 0x0000002a98cfea5c in ap_dispatcher_dispatch (dispatcher=0x2a95c36c40)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_dispatcher.c:878<br />
-#41 0x0000002a98cfbb5d in zim_ap_application_run (ht=Variable &#8220;ht&#8221; is not available.<br />
-) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_application.c:438<br />
-#42 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfffb0e0, return_value_used=0)<br />
-    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339<br />
-#43 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffb0e0)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202<br />
-#44 0x000000000076739f in execute (op_array=0x2a95c34990) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
-#45 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a95c34990) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272<br />
-#46 0x0000000000749128 in zend_execute_scripts (type=8, retval=0x0, file_count=3)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend.c:1134<br />
-#47 0x00000000007080c6 in php_execute_script (primary_file=0x7fbffffa80)<br />
-    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/main/main.c:2037<br />
-#48 0x00000000007d7494 in main (argc=4, argv=0x7fbffffbd8) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/sapi/cgi/cgi_main.c:2120<br />
-[/shell]<br />
+<p>4、Using command bt
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(gdb) bt</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#0  0x000000302b807abc in pthread_mutex_lock () from /lib64/tls/libpthread.so.0
+</span><span class='line'>#1  0x0000002a9bf58564 in AutoLock (this=0x7fbfff7d50, lock=@0x2a9d7a1af0) at ./util/Lock.h:36
+</span><span class='line'>#2  0x0000002a9bf5a91a in forum::HealthyStatus::getSelectRate (this=0x2a9d7a1a98, timeout=100, checkTime=3, minRate=0.10000000000000001)
+</span><span class='line'>    at filter/HealthyFilter.cpp:80
+</span><span class='line'>#3  0x0000002a9bf5b29b in forum::HealthyFilter::doFilter (this=0x1dd88e0, request=0x7fbfff8610) at filter/HealthyFilter.cpp:239
+</span><span class='line'>#4  0x0000002a9bf55f9c in forum::ChainFilter::doFilter (this=0x1dd86c0, request=0x7fbfff8610) at filter/ChainFilter.cpp:19
+</span><span class='line'>#5  0x0000002a9bf537ba in forum::CamelSuperStrategy::fetchServer (this=0x1ddd850, req=0x7fbfff8f00) at strategy/CamelSuperStrategy.cpp:140
+</span><span class='line'>#6  0x0000002a9bf39753 in odp::CamelService::fetchServer (this=0x1dd7d00, req=0x7fbfff9420) at CamelService.cpp:480
+</span><span class='line'>#7  0x0000002a9bf47e2b in odp::WorkerManager::fetchServer (this=0x13c6210, serviceName=0x2aa017c088 "Redis_pic_counter", req=0x7fbfff9420) at WorkerManager.cpp:282
+</span><span class='line'>#8  0x0000002a9bee02a0 in camel_call (service=0x2aa017c088 "Redis_pic_counter", method=0x2aa01735a8 "INCR", request_value=0x2aa01735e8, return_value=0x2aa0179598,
+</span><span class='line'>    extra=0x2aa0174720) at worker_proc.cpp:764
+</span><span class='line'>#9  0x0000002a9bed9474 in zif_ral (ht=4, return_value=0x2aa0179598, return_value_ptr=0x0, this_ptr=0x0, return_value_used=1) at camel.cpp:331
+</span><span class='line'>#10 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfff9750, return_value_used=1)
+</span><span class='line'>    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339
+</span><span class='line'>#11 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9750)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202
+</span><span class='line'>#12 0x000000000076739f in execute (op_array=0x2aa017a710) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92
+</span><span class='line'>#13 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa017a710) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272
+</span><span class='line'>#14 0x000000000073b37b in zend_call_function (fci=0x7fbfff9a20, fci_cache=Variable "fci_cache" is not available.
+</span><span class='line'>)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049
+</span><span class='line'>#15 0x000000000075b2cb in zend_call_method (object_pp=0x7fbfff9ae0, obj_ce=0x2aa0178bf0, fn_proxy=0x2aa0178dd0, function_name=0xc7c52f "__call", function_name_len=6,
+</span><span class='line'>    retval_ptr_ptr=0x7fbfff9ae8, param_count=729840304, arg1=0x2aa016d948, arg2=0x2aa016c948)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_interfaces.c:88
+</span><span class='line'>#16 0x0000000000763389 in zend_std_call_user_call (ht=Variable "ht" is not available.
+</span><span class='line'>)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_object_handlers.c:673
+</span><span class='line'>#17 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfff9d00, return_value_used=1)
+</span><span class='line'>    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339
+</span><span class='line'>#18 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9d00)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202
+</span><span class='line'>#19 0x000000000076739f in execute (op_array=0x2aa01729c8) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92
+</span><span class='line'>#20 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa01729c8) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272
+</span><span class='line'>#21 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfff9fe0)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234
+</span><span class='line'>#22 0x000000000076739f in execute (op_array=0x2aa0166b80) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92
+</span><span class='line'>#23 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa0166b80) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272
+</span><span class='line'>#24 0x000000000073b37b in zend_call_function (fci=0x7fbfffa250, fci_cache=Variable "fci_cache" is not available.
+</span><span class='line'>)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049
+</span><span class='line'>#25 0x000000000073c2b6 in call_user_function_ex (function_table=Variable "function_table" is not available.
+</span><span class='line'>)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:650
+</span><span class='line'>#26 0x0000000000696881 in zif_call_user_func_array (ht=Variable "ht" is not available.
+</span><span class='line'>)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/ext/standard/basic_functions.c:5217
+</span><span class='line'>#27 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfffa510, return_value_used=1)
+</span><span class='line'>    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339
+</span><span class='line'>#28 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffa510)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202
+</span><span class='line'>---Type &lt;return> to continue, or q &lt;return> to quit---
+</span><span class='line'>#29 0x000000000076739f in execute (op_array=0x2aa016cc70) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92
+</span><span class='line'>#30 0x0000002a98bc0800 in xdebug_execute (op_array=0x2aa016cc70) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272
+</span><span class='line'>#31 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffa7a0)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234
+</span><span class='line'>#32 0x000000000076739f in execute (op_array=0x2a9ff05740) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92
+</span><span class='line'>#33 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a9ff05740) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272
+</span><span class='line'>#34 0x000000000076765c in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffaa00)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:234
+</span><span class='line'>#35 0x000000000076739f in execute (op_array=0x2a9ff19428) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92
+</span><span class='line'>#36 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a9ff19428) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272
+</span><span class='line'>#37 0x000000000073b37b in zend_call_function (fci=0x7fbfffacd0, fci_cache=Variable "fci_cache" is not available.
+</span><span class='line'>)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_execute_API.c:1049
+</span><span class='line'>#38 0x000000000075b2cb in zend_call_method (object_pp=0x7fbfffadc0, obj_ce=0x2a9ff05430, fn_proxy=0x0, function_name=0x2a98d14a27 "execute", function_name_len=7,
+</span><span class='line'>    retval_ptr_ptr=0x7fbfffade0, param_count=729840304, arg1=0x0, arg2=0x0)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_interfaces.c:88
+</span><span class='line'>#39 0x0000002a98cfe3ae in ap_dispatcher_handle (dispatcher=0x2a95c36c40, request=0x2a95c3b2e0, response=0x2a95c3efd0, view=0x2a9fefd6d0)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_dispatcher.c:683
+</span><span class='line'>#40 0x0000002a98cfea5c in ap_dispatcher_dispatch (dispatcher=0x2a95c36c40)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_dispatcher.c:878
+</span><span class='line'>#41 0x0000002a98cfbb5d in zim_ap_application_run (ht=Variable "ht" is not available.
+</span><span class='line'>) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php-ap_1-1-1-0_PD_BL/output/ap_application.c:438
+</span><span class='line'>#42 0x0000002a98bc0b24 in xdebug_execute_internal (current_execute_data=0x7fbfffb0e0, return_value_used=0)
+</span><span class='line'>    at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1339
+</span><span class='line'>#43 0x0000000000767d90 in zend_do_fcall_common_helper_SPEC (execute_data=0x7fbfffb0e0)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:202
+</span><span class='line'>#44 0x000000000076739f in execute (op_array=0x2a95c34990) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92
+</span><span class='line'>#45 0x0000002a98bc0800 in xdebug_execute (op_array=0x2a95c34990) at /home/st/zhangdongjin/php-libs/downloads/xdebug-2.1.0/xdebug.c:1272
+</span><span class='line'>#46 0x0000000000749128 in zend_execute_scripts (type=8, retval=0x0, file_count=3)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/Zend/zend.c:1134
+</span><span class='line'>#47 0x00000000007080c6 in php_execute_script (primary_file=0x7fbffffa80)
+</span><span class='line'>    at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/main/main.c:2037
+</span><span class='line'>#48 0x00000000007d7494 in main (argc=4, argv=0x7fbffffbd8) at /home/work/opbin/install/basic-env_1-0-1_BL/output/tmp/php_5-2-17_PD_BL/output/sapi/cgi/cgi_main.c:2120</span></code></pre></td></tr></table></div></figure>
  
-5、Using command f could select and print a stack frame.<br />
-[shell]<br />
-(gdb) f 30<br />
-[/shell]<br />
-[shell]<br />
-#30 0x00000000007672df in execute (op_array=0x2aa00101f8) at /home/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92<br />
-92  in /home/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h<br />
-[/shell]<br />
+5、Using command f could select and print a stack frame.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(gdb) f 30</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#30 0x00000000007672df in execute (op_array=0x2aa00101f8) at /home/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h:92
+</span><span class='line'>92  in /home/output/tmp/php_5-2-17_PD_BL/output/Zend/zend_vm_execute.h</span></code></pre></td></tr></table></div></figure>
  
-6、Using command p could print val<br />
-[shell]<br />
-(gdb) p *op_array<br />
-[/shell]<br />
-[shell]<br />
-$8 = {type = 2 &#8216;\002&#8217;, function_name = 0x2a9f32e520 &#8220;process&#8221;, scope = 0x2aa000fe80, fn_flags = 66048, prototype = 0x0, num_args = 2, required_num_args = 2, arg_info = 0x2a9f32e4b0, <br />
-  pass_rest_by_reference = 0 &#8216;\0&#8217;, return_reference = 0 &#8216;\0&#8217;, refcount = 0x2a98ab0450, opcodes = 0x2a9f32e528, last = 512, size = 512, vars = 0x2a9f33d8a8, last_var = 17, size_var = 0, T = 34, <br />
-  brk_cont_array = 0x2a9f33d828, last_brk_cont = 8, current_brk_cont = 4294967295, try_catch_array = 0x0, last_try_catch = 0, static_variables = 0x0, start_op = 0x0, backpatch_count = 0, <br />
-  done_pass_two = 1 &#8216;\001&#8217;, uses_this = 0 &#8216;\0&#8217;, filename = 0x2a9f32e069 &#8220;/home/app/webapp/models/service/page/user/WebIndex.php&#8221;, line_start = 19, line_end = 205, doc_comment = 0x0, <br />
-  doc_comment_len = 0, reserved = {0x0, 0x0, 0x0, 0x0}}<br />
-[/shell]</return></return></p>
+6、Using command p could print val
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(gdb) p *op_array</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$8 = {type = 2 '\002', function_name = 0x2a9f32e520 "process", scope = 0x2aa000fe80, fn_flags = 66048, prototype = 0x0, num_args = 2, required_num_args = 2, arg_info = 0x2a9f32e4b0, 
+</span><span class='line'>  pass_rest_by_reference = 0 '\0', return_reference = 0 '\0', refcount = 0x2a98ab0450, opcodes = 0x2a9f32e528, last = 512, size = 512, vars = 0x2a9f33d8a8, last_var = 17, size_var = 0, T = 34, 
+</span><span class='line'>  brk_cont_array = 0x2a9f33d828, last_brk_cont = 8, current_brk_cont = 4294967295, try_catch_array = 0x0, last_try_catch = 0, static_variables = 0x0, start_op = 0x0, backpatch_count = 0, 
+</span><span class='line'>  done_pass_two = 1 '\001', uses_this = 0 '\0', filename = 0x2a9f32e069 "/home/app/webapp/models/service/page/user/WebIndex.php", line_start = 19, line_end = 205, doc_comment = 0x0, 
+</span><span class='line'>  doc_comment_len = 0, reserved = {0x0, 0x0, 0x0, 0x0}}</span></code></pre></td></tr></table></div></figure>
+</p>
 ]]></content>
   </entry>
   
@@ -757,42 +848,69 @@ I did some tests. These web files should be used like in the same path. I think 
 <a href="http://yangruixuan.github.io/images/blog/add_webview.png"><img title="add_webview" src="http://yangruixuan.github.io/images/blog/add_webview.png" alt="" width="100%" /></a></p>
 
 <p>5. Link the WebView to your AppDelegate.h. The code in AppDelegate.h:<br />
-[cpp]<br />
-#import &#8220;Cocoa/Cocoa.h&#8221;<br />
-#import &#8220;WebKit/WebKit.h&#8221;</p>
 
-<p>@interface AppDelegate : NSObject {<br />
-NSWindow *window;<br />
-IBOutlet WebView *webView;<br />
-}</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#import "Cocoa/Cocoa.h"
+</span><span class='line'>#import "WebKit/WebKit.h"
+</span><span class='line'>
+</span><span class='line'>@interface AppDelegate : NSObject {
+</span><span class='line'>NSWindow *window;
+</span><span class='line'>IBOutlet WebView *webView;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>@property (assign) IBOutlet NSWindow *window;
+</span><span class='line'>@property (nonatomic, retain) IBOutlet WebView *webView;
+</span><span class='line'>
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure>
 
-<p>@property (assign) IBOutlet NSWindow *window;<br />
-@property (nonatomic, retain) IBOutlet WebView *webView;</p>
-
-<p>@end<br />
-[/cpp]</p>
-
-<p>6. Open your web htm file when the app start. Insert the open file code in AppDelegate.m:<br />
-[cpp]<br />
-#import &#8220;AppDelegate.h&#8221;</p>
-
-<p>@implementation AppDelegate</p>
-
-<p>@synthesize window;<br />
-@synthesize webView;</p>
-
-<p>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification<br />
-{
-// Insert code here to initialize your application<br />
-}</p>
-
-<p>- (void)awakeFromNib {<br />
-NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];<br />
-NSString *htmlPath = [resourcesPath stringByAppendingString:@&#8221;/aero.html&#8221;];<br />
-[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:htmlPath]]];<br />
-}
-@end<br />
-[/cpp]</p>
+6. Open your web htm file when the app start. Insert the open file code in AppDelegate.m:
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#import "AppDelegate.h"
+</span><span class='line'>
+</span><span class='line'>@implementation AppDelegate
+</span><span class='line'>
+</span><span class='line'>@synthesize window;
+</span><span class='line'>@synthesize webView;
+</span><span class='line'>
+</span><span class='line'>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+</span><span class='line'>{
+</span><span class='line'>// Insert code here to initialize your application
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>- (void)awakeFromNib {
+</span><span class='line'>NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
+</span><span class='line'>NSString *htmlPath = [resourcesPath stringByAppendingString:@"/aero.html"];
+</span><span class='line'>[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:htmlPath]]];
+</span><span class='line'>}
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure>
 
 <p>That&#8217;s it. Running like a native app.
 <a href="http://yangruixuan.github.io/images/blog/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="http://yangruixuan.github.io/images/blog/web_app.png" alt="" width="100%" /></a></p>
@@ -810,9 +928,9 @@ NSString *htmlPath = [resourcesPath stringByAppendingString:@&#8221;/aero.html&#
 <pre>1、Macbook Air 2011 13'' + Mac OS X Lion 10.7.4 + XCode 4.3.2 + iOS SDK 5.1
 2、iPad 1 + iOS 5.0.1</pre>
 First, modify your SDK setting<br />
-[shell]cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/</p>
+<pre>cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/
 
-<p>sudo vi SDKSettings.plist[/shell]<br />
+sudo vi SDKSettings.plist</pre><br />
 Find the key named <em>CODE_SIGNING_REQUIRED</em> and change its value to <em>NO</em></p>
 
 <p>Second, modify your project setting

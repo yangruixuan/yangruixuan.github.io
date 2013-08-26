@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac OS X | Jack's Blog]]></title>
   <link href="http://yangruixuan.github.io/blog/categories/mac-os-x/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T20:38:03+08:00</updated>
+  <updated>2013-08-26T20:43:02+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -159,74 +159,86 @@ I did some tests. These web files should be used like in the same path. I think 
 
 
 
-<p>5. Link the WebView to your AppDelegate.h. The code in AppDelegate.h:<br />
-[cpp]<br />
-#import "Cocoa/Cocoa.h"<br />
-#import "WebKit/WebKit.h"</p>
+<p><p>5. Link the WebView to your AppDelegate.h. The code in AppDelegate.h:<br /></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>import &ldquo;Cocoa/Cocoa.h&rdquo;&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;h1>import &ldquo;WebKit/WebKit.h&rdquo;&lt;/h1>
+</span><span class='line'>
+</span><span class='line'>&lt;p>@interface AppDelegate : NSObject {
+</span><span class='line'>NSWindow &lt;em>window;
+</span><span class='line'>IBOutlet WebView &lt;/em>webView;
+</span><span class='line'>}&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>@property (assign) IBOutlet NSWindow &lt;em>window;
+</span><span class='line'>@property (nonatomic, retain) IBOutlet WebView &lt;/em>webView;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>@end</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ol>
+<li>Open your web htm file when the app start. Insert the open file code in AppDelegate.m:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;h1>import &ldquo;AppDelegate.h&rdquo;&lt;/h1>&lt;/li>
+</span><span class='line'>&lt;/ol>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>&lt;p>@implementation AppDelegate&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>@synthesize window;
+</span><span class='line'>@synthesize webView;&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;ul>
+</span><span class='line'>&lt;li>&lt;p>(void)applicationDidFinishLaunching:(NSNotification *)aNotification
+</span><span class='line'>{
+</span><span class='line'>// Insert code here to initialize your application
+</span><span class='line'>}&lt;/p>&lt;/li>
+</span><span class='line'>&lt;li>&lt;p>(void)awakeFromNib {
+</span><span class='line'>NSString &lt;em>resourcesPath = [[NSBundle mainBundle] resourcePath];
+</span><span class='line'>NSString &lt;/em>htmlPath = [resourcesPath stringByAppendingString:@&ldquo;/aero.html&rdquo;];
+</span><span class='line'>[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:htmlPath]]];
+</span><span class='line'>}
+</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+</ul>
 
 
-
-
-<p>@interface AppDelegate : NSObject {<br />
-NSWindow *window;<br />
-IBOutlet WebView *webView;<br />
-}</p>
-
-
-
-
-<p>@property (assign) IBOutlet NSWindow *window;<br />
-@property (nonatomic, retain) IBOutlet WebView *webView;</p>
-
-
-
-
-<p>@end<br />
-[/cpp]</p>
-
-
-
-
-<p>6. Open your web htm file when the app start. Insert the open file code in AppDelegate.m:<br />
-[cpp]<br />
-#import "AppDelegate.h"</p>
-
-
-
-
-<p>@implementation AppDelegate</p>
-
-
-
-
-<p>@synthesize window;<br />
-@synthesize webView;</p>
-
-
-
-
-<p>- (void)applicationDidFinishLaunching:(NSNotification *)aNotification<br />
-{
-// Insert code here to initialize your application<br />
-}</p>
-
-
-
-
-<p>- (void)awakeFromNib {<br />
-NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];<br />
-NSString *htmlPath = [resourcesPath stringByAppendingString:@"/aero.html"];<br />
-[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:htmlPath]]];<br />
-}
-@end<br />
-[/cpp]</p>
-
-
-
-
-<p>That's it. Running like a native app.
-<a href="http://yangruixuan.github.io/images/blog/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="http://yangruixuan.github.io/images/blog/web_app.png" alt="" width="100%" /></a></p>
-
+<p><p>That&rsquo;s it. Running like a native app.
+<a href="http://yangruixuan.github.io/images/blog/web_app.png"><img class="alignnone size-full wp-image-40" title="web_app" src="http://yangruixuan.github.io/images/blog/web_app.png" alt="" width="100%" /></a></p></p>
 ]]></content>
   </entry>
   

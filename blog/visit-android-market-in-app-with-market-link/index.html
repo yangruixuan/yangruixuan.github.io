@@ -9,7 +9,10 @@
   <meta name="author" content="Jack Yang">
 
   
-  <meta name="description" content="Visit Android Market in App With Market:// Link 2013-01-06 Using Intent in your Activity to visit Android market: [java]Intent installIntent = new &hellip;">
+  <meta name="description" content="Visit Android Market in App With Market:// Link 2013-01-06 Using Intent in your Activity to visit Android market: 1
+2
+3
+Intent installIntent = new &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,9 +100,12 @@
     <div class="span12">
       <p>Using Intent in your Activity to visit Android market:</p>
 
-<p>[java]Intent installIntent = new Intent(&#8220;android.intent.action.VIEW&#8221;); <br />
-installIntent.setData(Uri.parse(&#8220;market://search?q=pname:&#8221;+packageName)); <br />
-startActivity(installIntent);[/java]</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Intent installIntent = new Intent("android.intent.action.VIEW");
+</span><span class='line'>installIntent.setData(Uri.parse("market://search?q=pname:"+packageName));
+</span><span class='line'>startActivity(installIntent);</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Visit a app&#8217;s details by package name:<br />
  
