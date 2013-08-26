@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | Jack‘s Blog]]></title>
   <link href="http://yangruixuan.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T19:01:18+08:00</updated>
+  <updated>2013-08-26T19:05:36+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to disable Android home menu back search keys out of apps or change keys layout]]></title>
-    <link href="http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/"/>
+    <link href="http://yangruixuan.github.io/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/"/>
     <updated>2012-12-03T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout</id>
+    <id>http://yangruixuan.github.io/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout</id>
     <content type="html"><![CDATA[<p>If you want to disable the home/menu/back/search keys or key layout in your apps. You can add some code response the key press event. But if you want to do this out of your apps, you can change the config of system key layout. Of course you have to root first.</p>
 
 

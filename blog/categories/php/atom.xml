@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | Jack‘s Blog]]></title>
   <link href="http://yangruixuan.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T19:01:18+08:00</updated>
+  <updated>2013-08-26T19:05:36+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using gdb debug php core dump file]]></title>
-    <link href="http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file/"/>
+    <link href="http://yangruixuan.github.io/using-gdb-debug-php-core-dump-file/"/>
     <updated>2012-09-27T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file</id>
+    <id>http://yangruixuan.github.io/using-gdb-debug-php-core-dump-file</id>
     <content type="html"><![CDATA[<p>1.Using command <em>file</em> you can find this corefile was created by <em>php-cgi</em>
 [shell]<br />
 $ file corefile<br />

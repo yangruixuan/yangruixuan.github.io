@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac OS X | Jack‘s Blog]]></title>
   <link href="http://yangruixuan.github.io/blog/categories/mac-os-x/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T19:01:18+08:00</updated>
+  <updated>2013-08-26T19:05:36+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Install PhpBeautifier plugin for Sublime text 2 in Mac]]></title>
-    <link href="http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/"/>
+    <link href="http://yangruixuan.github.io/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/"/>
     <updated>2013-01-17T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac</id>
+    <id>http://yangruixuan.github.io/install-phpbeautifier-plugin-for-sublime-text-2-in-mac</id>
     <content type="html"><![CDATA[<p>1. Install PhpBeautifier from pear channel : sudo pear install --alldeps channel://pear.php.net/php_beautifier-0.1.15</p>
 
 
@@ -85,9 +85,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to change the path to the active Xcode installation for your machine]]></title>
-    <link href="http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/"/>
+    <link href="http://yangruixuan.github.io/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/"/>
     <updated>2012-07-13T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine</id>
+    <id>http://yangruixuan.github.io/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine</id>
     <content type="html"><![CDATA[<p>I updated my Mac OS X to 10.8GM today. Everything was fine. And then update Xcode to 4.4GM for 4.3 doesn't support 10.8. I made a mistake that I run Xcode.app in dmg file. Then a setup wizard showed up. I press next next next... Suddenly I remind I should move the app to Application folder first. But the setup wizard can't show up again. And the path of xcode had be set to /Volumes/Xcode.app/...<br />
 How to change it to the right path? I googled it there is a command named xcode-select.
 <pre>
@@ -124,9 +124,9 @@ Everything goes fine now.</xcode_path></p>
   
   <entry>
     <title type="html"><![CDATA[How to develop Mac OS X apps using HTML5]]></title>
-    <link href="http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5/"/>
+    <link href="http://yangruixuan.github.io/how-to-develop-mac-os-x-apps-using-html5/"/>
     <updated>2012-05-28T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5</id>
+    <id>http://yangruixuan.github.io/how-to-develop-mac-os-x-apps-using-html5</id>
     <content type="html"><![CDATA[<p>HTML5 is very popular now. Lots of apps in mobile using HTML5 framework like PhoneGap, Sencha, Trigger, jQueryMobile...<br />
 If you want to develop Mac apps, you have to learn Objective-C and cocoa. But it is difficult for a beginner or web designer. So how about using HTML5? We can add a WebView on the app and display local html in it.<br />
 Let's start!</p>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How to deploy app to your iOS device without certificate key - Jack‘s Blog</title>
+  <title>Visit Android market in app with market:// link - Jack‘s Blog</title>
   <meta name="author" content="Jack Yang">
 
   
-  <meta name="description" content="As we all know, it&#8217;s cost $99 to become a apple developer. But sometimes we have to make sure the app is ready. So how to deploy app before we &hellip;">
+  <meta name="description" content="Using Intent in your Activity to visit Android market: [java]Intent installIntent = new Intent(&#8220;android.intent.action.VIEW&#8221;); &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate">
+  <link rel="canonical" href="http://yangruixuan.github.io/visit-android-market-in-app-with-market-link">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Jack‘s Blog" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">How to Deploy App to Your iOS Device Without Certificate Key</h1>
+      <h1 class="entry-title">Visit Android Market in App With Market:// Link</h1>
     
     
       <p class="meta">
@@ -84,36 +84,45 @@
   
 
 
-<time datetime="2012-05-12T00:00:00+08:00" pubdate data-updated="true">2012-05-12</time>
+<time datetime="2013-01-06T00:00:00+08:00" pubdate data-updated="true">2013-01-06</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>As we all know, it&#8217;s cost $99 to become a apple developer. But sometimes we have to make sure the app is ready. So how to deploy app before we have a certificate private key? Here we go!</p>
+<div class="entry-content"><p>Using Intent in your Activity to visit Android market:</p>
 
-<p>My test environment is:
-<pre>1、Macbook Air 2011 13'' + Mac OS X Lion 10.7.4 + XCode 4.3.2 + iOS SDK 5.1
-2、iPad 1 + iOS 5.0.1</pre>
-First, modify your SDK setting<br />
-[shell]cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/</p>
+<p>[java]Intent installIntent = new Intent(&#8220;android.intent.action.VIEW&#8221;); <br />
+installIntent.setData(Uri.parse(&#8220;market://search?q=pname:&#8221;+packageName)); <br />
+startActivity(installIntent);[/java]</p>
 
-<p>sudo vi SDKSettings.plist[/shell]<br />
-Find the key named <em>CODE_SIGNING_REQUIRED</em> and change its value to <em>NO</em></p>
+<p>Visit a app&#8217;s details by package name:<br />
+ 
+<pre class="lang:default decode:true ">market://details?id=&lt;app package name&gt;
+Example：market://details?id=com.son1c.adsense.lite</pre> </p>
 
-<p>Second, modify your project setting
-<pre>1、Select your project in the left [Project navigator]
-2、Select the [PROJECT] or [TARGETS]
-3、Select [Build Setting]
-4、Change the [Code Signing Identity]'s children to [Don't Code Sign]</pre>
-<a href="http://www.jack-y.com/wp-content/uploads/2012/05/deploy_without_certificate.png"><img class="alignnone size-full wp-image-24" title="deploy_without_certificate" src="http://www.jack-y.com/wp-content/uploads/2012/05/deploy_without_certificate.png" alt="" width="100%" /></a></p>
+<p>Search a app by package name:<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=pname:&lt;app package name&gt;
+Example：market://search?q=pname:com.son1c.adsense.lite</pre> </p>
 
-<p>Third, connect your iOS device to your Mac. The version of iOS between my iPad(5.0) and SDK(5.1) is different, so your device will not show up. If then, you should change the [iOS Deployment Target] in [Build Setting] to your device&#8217;s version(mine is 5.0). </p>
+<p>Search apps by developer name:<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=pub:&lt;developer name&gt;
+Example：market://search?q=pub:Jack</pre> </p>
 
-<p>Finally, Select your device instead of the simulator and RUN.</p>
+<p>Search apps by keyword<br />
+ 
+<pre class="lang:default decode:true ">market://search?q=&lt;keyword&gt;
+Example：market://search?q=adsense</pre> </p>
 
-<p>Enjoy it!</p>
+<p>Union search<br />
+Using multi search conditions<br />
+ 
+<pre class="lang:default decode:true ">Example：market://search?q=adsense pub:Jack</pre> </p>
+
+<p></p>
 </div>
 
 
@@ -136,21 +145,15 @@ Find the key named <em>CODE_SIGNING_REQUIRED</em> and change its value to <em>NO
   
 
 
-<time datetime="2012-05-12T00:00:00+08:00" pubdate data-updated="true">2012-05-12</time>
+<time datetime="2013-01-06T00:00:00+08:00" pubdate data-updated="true">2013-01-06</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/ios/'>iOS</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate/" data-via="" data-counturl="http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yangruixuan.github.io/visit-android-market-in-app-with-market-link/" data-via="" data-counturl="http://yangruixuan.github.io/visit-android-market-in-app-with-market-link/" >Tweet</a>
   
   
   
@@ -159,8 +162,10 @@ Find the key named <em>CODE_SIGNING_REQUIRED</em> and change its value to <em>NO
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/" title="Previous Post: How to disable Android home menu back search keys out of apps or change keys layout">&laquo; How to disable Android home menu back search keys out of apps or change keys layout</a>
       
-        <a class="basic-alignment right" href="/blog/how-to-develop-mac-os-x-apps-using-html5/" title="Next Post: How to develop Mac OS X apps using HTML5">How to develop Mac OS X apps using HTML5 &raquo;</a>
+      
+        <a class="basic-alignment right" href="/how-to-create-a-simple-launcher-app-for-android/" title="Next Post: How to create a simple Launcher app for Android">How to create a simple Launcher app for Android &raquo;</a>
       
     </p>
   </footer>
@@ -175,23 +180,23 @@ Find the key named <em>CODE_SIGNING_REQUIRED</em> and change its value to <em>NO
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/">Install PhpBeautifier Plugin for Sublime Text 2 in Mac</a>
+        <a href="/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/">Install PhpBeautifier Plugin for Sublime Text 2 in Mac</a>
       </li>
     
       <li class="post">
-        <a href="/blog/how-to-create-a-simple-launcher-app-for-android/">How to Create a Simple Launcher App for Android</a>
+        <a href="/how-to-create-a-simple-launcher-app-for-android/">How to Create a Simple Launcher App for Android</a>
       </li>
     
       <li class="post">
-        <a href="/blog/visit-android-market-in-app-with-market-link/">Visit Android Market in App With Market:// Link</a>
+        <a href="/visit-android-market-in-app-with-market-link/">Visit Android Market in App With Market:// Link</a>
       </li>
     
       <li class="post">
-        <a href="/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/">How to Disable Android Home Menu Back Search Keys Out of Apps or Change Keys Layout</a>
+        <a href="/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/">How to Disable Android Home Menu Back Search Keys Out of Apps or Change Keys Layout</a>
       </li>
     
       <li class="post">
-        <a href="/blog/using-gdb-debug-php-core-dump-file/">Using Gdb Debug Php Core Dump File</a>
+        <a href="/using-gdb-debug-php-core-dump-file/">Using Gdb Debug Php Core Dump File</a>
       </li>
     
   </ul>

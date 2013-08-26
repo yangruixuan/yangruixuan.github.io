@@ -4,7 +4,7 @@
   <title><![CDATA[Jack‘s Blog]]></title>
   <link href="http://yangruixuan.github.io/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T19:01:18+08:00</updated>
+  <updated>2013-08-26T19:05:36+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Install PhpBeautifier plugin for Sublime text 2 in Mac]]></title>
-    <link href="http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/"/>
+    <link href="http://yangruixuan.github.io/install-phpbeautifier-plugin-for-sublime-text-2-in-mac/"/>
     <updated>2013-01-17T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/install-phpbeautifier-plugin-for-sublime-text-2-in-mac</id>
+    <id>http://yangruixuan.github.io/install-phpbeautifier-plugin-for-sublime-text-2-in-mac</id>
     <content type="html"><![CDATA[<p>1. Install PhpBeautifier from pear channel : sudo pear install &#8211;alldeps channel://pear.php.net/php_beautifier-0.1.15</p>
 
 <p>2. Install PhpBeautifier plugin in Sublime text. Press cmd+shift+p and select Package Control:Install Package. Then select PhpBeautifier.</p>
@@ -48,9 +48,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to create a simple Launcher app for Android]]></title>
-    <link href="http://yangruixuan.github.io/blog/how-to-create-a-simple-launcher-app-for-android/"/>
+    <link href="http://yangruixuan.github.io/how-to-create-a-simple-launcher-app-for-android/"/>
     <updated>2013-01-10T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/how-to-create-a-simple-launcher-app-for-android</id>
+    <id>http://yangruixuan.github.io/how-to-create-a-simple-launcher-app-for-android</id>
     <content type="html"><![CDATA[<p><h2>1. we need make this app as home launcher. Bind the HOME key press.</h2>
 When you click the HOME key. This selector shows up.</p>
 
@@ -296,9 +296,9 @@ import android.widget.ImageView;</p>
   
   <entry>
     <title type="html"><![CDATA[Visit Android market in app with market:// link]]></title>
-    <link href="http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link/"/>
+    <link href="http://yangruixuan.github.io/visit-android-market-in-app-with-market-link/"/>
     <updated>2013-01-06T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/visit-android-market-in-app-with-market-link</id>
+    <id>http://yangruixuan.github.io/visit-android-market-in-app-with-market-link</id>
     <content type="html"><![CDATA[<p>Using Intent in your Activity to visit Android market:</p>
 
 <p>[java]Intent installIntent = new Intent(&#8220;android.intent.action.VIEW&#8221;); <br />
@@ -336,9 +336,9 @@ Using multi search conditions<br />
   
   <entry>
     <title type="html"><![CDATA[How to disable Android home menu back search keys out of apps or change keys layout]]></title>
-    <link href="http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/"/>
+    <link href="http://yangruixuan.github.io/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout/"/>
     <updated>2012-12-03T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout</id>
+    <id>http://yangruixuan.github.io/how-to-disable-android-home-menu-back-search-keys-out-of-apps-or-change-keys-layout</id>
     <content type="html"><![CDATA[<p>If you want to disable the home/menu/back/search keys or key layout in your apps. You can add some code response the key press event. But if you want to do this out of your apps, you can change the config of system key layout. Of course you have to root first.</p>
 
 <p>You can find *.kl files in /system/usr/keylayout .</p>
@@ -380,9 +380,9 @@ WAKE_DROPPED - wake up device without sending message to apps</p>
   
   <entry>
     <title type="html"><![CDATA[Using gdb debug php core dump file]]></title>
-    <link href="http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file/"/>
+    <link href="http://yangruixuan.github.io/using-gdb-debug-php-core-dump-file/"/>
     <updated>2012-09-27T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/using-gdb-debug-php-core-dump-file</id>
+    <id>http://yangruixuan.github.io/using-gdb-debug-php-core-dump-file</id>
     <content type="html"><![CDATA[<p>1.Using command <em>file</em> you can find this corefile was created by <em>php-cgi</em>
 [shell]<br />
 $ file corefile<br />
@@ -533,9 +533,9 @@ $8 = {type = 2 &#8216;\002&#8217;, function_name = 0x2a9f32e520 &#8220;process&#
   
   <entry>
     <title type="html"><![CDATA[How to change the path to the active Xcode installation for your machine]]></title>
-    <link href="http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/"/>
+    <link href="http://yangruixuan.github.io/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine/"/>
     <updated>2012-07-13T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine</id>
+    <id>http://yangruixuan.github.io/how-to-change-the-path-to-the-active-xcode-installation-for-your-machine</id>
     <content type="html"><![CDATA[<p>I updated my Mac OS X to 10.8GM today. Everything was fine. And then update Xcode to 4.4GM for 4.3 doesn&#8217;t support 10.8. I made a mistake that I run Xcode.app in dmg file. Then a setup wizard showed up. I press next next next&#8230; Suddenly I remind I should move the app to Application folder first. But the setup wizard can&#8217;t show up again. And the path of xcode had be set to /Volumes/Xcode.app/&#8230;<br />
 How to change it to the right path? I googled it there is a command named xcode-select.
 <pre>
@@ -565,9 +565,9 @@ Everything goes fine now.</xcode_path></p>
   
   <entry>
     <title type="html"><![CDATA[How to develop Mac OS X apps using HTML5]]></title>
-    <link href="http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5/"/>
+    <link href="http://yangruixuan.github.io/how-to-develop-mac-os-x-apps-using-html5/"/>
     <updated>2012-05-28T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/how-to-develop-mac-os-x-apps-using-html5</id>
+    <id>http://yangruixuan.github.io/how-to-develop-mac-os-x-apps-using-html5</id>
     <content type="html"><![CDATA[<p>HTML5 is very popular now. Lots of apps in mobile using HTML5 framework like PhoneGap, Sencha, Trigger, jQueryMobile&#8230;<br />
 If you want to develop Mac apps, you have to learn Objective-C and cocoa. But it is difficult for a beginner or web designer. So how about using HTML5? We can add a WebView on the app and display local html in it.<br />
 Let&#8217;s start!</p>
@@ -630,9 +630,9 @@ NSString *htmlPath = [resourcesPath stringByAppendingString:@&#8221;/aero.html&#
   
   <entry>
     <title type="html"><![CDATA[How to deploy app to your iOS device without certificate key]]></title>
-    <link href="http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate/"/>
+    <link href="http://yangruixuan.github.io/howto-deploy-app-to-your-ios-device-without-certificate/"/>
     <updated>2012-05-12T00:00:00+08:00</updated>
-    <id>http://yangruixuan.github.io/blog/howto-deploy-app-to-your-ios-device-without-certificate</id>
+    <id>http://yangruixuan.github.io/howto-deploy-app-to-your-ios-device-without-certificate</id>
     <content type="html"><![CDATA[<p>As we all know, it&#8217;s cost $99 to become a apple developer. But sometimes we have to make sure the app is ready. So how to deploy app before we have a certificate private key? Here we go!</p>
 
 <p>My test environment is:
