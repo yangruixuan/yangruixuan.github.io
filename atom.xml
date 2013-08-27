@@ -4,7 +4,7 @@
   <title><![CDATA[Jack's Blog]]></title>
   <link href="http://yangruixuan.github.io/atom.xml" rel="self"/>
   <link href="http://yangruixuan.github.io/"/>
-  <updated>2013-08-26T20:43:02+08:00</updated>
+  <updated>2013-08-27T16:30:29+08:00</updated>
   <id>http://yangruixuan.github.io/</id>
   <author>
     <name><![CDATA[Jack Yang]]></name>
@@ -481,28 +481,28 @@ Finally the whole Activity code:
 
 <p>Visit a app&#8217;s details by package name:<br />
  
-<pre class="lang:default decode:true ">market://details?id=&lt;app package name&gt;
+<pre>market://details?id=&lt;app package name&gt;
 Example：market://details?id=com.son1c.adsense.lite</pre> </p>
 
 <p>Search a app by package name:<br />
  
-<pre class="lang:default decode:true ">market://search?q=pname:&lt;app package name&gt;
+<pre>market://search?q=pname:&lt;app package name&gt;
 Example：market://search?q=pname:com.son1c.adsense.lite</pre> </p>
 
 <p>Search apps by developer name:<br />
  
-<pre class="lang:default decode:true ">market://search?q=pub:&lt;developer name&gt;
+<pre>market://search?q=pub:&lt;developer name&gt;
 Example：market://search?q=pub:Jack</pre> </p>
 
 <p>Search apps by keyword<br />
  
-<pre class="lang:default decode:true ">market://search?q=&lt;keyword&gt;
+<pre>market://search?q=&lt;keyword&gt;
 Example：market://search?q=adsense</pre> </p>
 
 <p>Union search<br />
 Using multi search conditions<br />
  
-<pre class="lang:default decode:true ">Example：market://search?q=adsense pub:Jack</pre> </p>
+<pre>Example：market://search?q=adsense pub:Jack</pre> </p>
 
 <p></p>
 ]]></content>
